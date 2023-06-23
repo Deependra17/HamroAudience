@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "https://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head>
+<meta charset='utf-8'>
+<title>TestNG Report</title>
+<style type="text/css">
+table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}
+td,th {border:1px solid #009;padding:.25em .5em}
+.result th {vertical-align:bottom}
+.param th {padding-left:1em;padding-right:1em}
+.param td {padding-left:.5em;padding-right:2em}
+.stripe td,.stripe th {background-color: #E6EBF9}
+.numi,.numi_attn {text-align:right}
+.total td {font-weight:bold}
+.passedodd td {background-color: #0A0}
+.passedeven td {background-color: #3F3}
+.skippedodd td {background-color: #CCC}
+.skippedodd td {background-color: #DDD}
+.failedodd td,.numi_attn {background-color: #F33}
+.failedeven td,.stripe .numi_attn {background-color: #D00}
+.stacktrace {white-space:pre;font-family:monospace}
+.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}
+</style>
+</head>
+<body>
+<table cellspacing="0" cellpadding="0" class="testOverview">
+<tr><th>Test</th><th>Methods<br/>Passed</th><th>Scenarios<br/>Passed</th><th># skipped</th><th># failed</th><th>Total<br/>Time</th><th>Included<br/>Groups</th><th>Excluded<br/>Groups</th></tr>
+<tr><td style="text-align:left;padding-right:2em"><a href="#t1">Audience</a></td><td class="numi">6</td><td class="numi">6</td><td class="numi">0</td><td class="numi_attn">2</td><td class="numi">325.7 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+</table>
+<table cellspacing="0" cellpadding="0" class="methodOverview" id="summary">
+<tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
+<tr id="t1"><th colspan="5">Audience &#8212; failed</th></tr>
+<tr class="failedodd"><td>org.hamropatro.campaign.services.ServiceMessageTest</td><td><a href="#m1"><b>CreateServiceMessage</b>  </a></td><td class="numi">1</td><td>1687163631835</td><td class="numi">56328</td></tr>
+<tr class="failedeven"><td>org.hamropatro.brokenLinks.BrokenLinksTest</td><td><a href="#m2"><b>LinkTest</b>  </a></td><td class="numi">1</td><td>1687163520275</td><td class="numi">91804</td></tr>
+<tr><th colspan="5">Audience &#8212; passed</th></tr>
+<tr class="passedodd"><td>org.hamropatro.campaign.services.CmpGeneralPushTest</td><td><a href="#m3"><b>CreateGeneralPush</b>  </a></td><td class="numi">1</td><td>1687163736452</td><td class="numi">67510</td></tr>
+<tr class="passedeven"><td>org.hamropatro.campaign.services.CmpShortServiceMessageTest</td><td><a href="#m4"><b>CreateShortServiceMessage</b>  </a></td><td class="numi">1</td><td>1687163803963</td><td class="numi">23250</td></tr>
+<tr class="passedodd"><td>org.hamropatro.segment.SegmentTest</td><td><a href="#m5"><b>CreateNewSegment</b>  </a></td><td class="numi">1</td><td>1687163688166</td><td class="numi">21202</td></tr>
+<tr class="passedeven"><td>org.hamropatro.login.LoginTest</td><td><a href="#m6"><b>TestLogin</b>  </a></td><td class="numi">1</td><td>1687163501589</td><td class="numi">18681</td></tr>
+<tr class="passedodd"><td>org.hamropatro.campaign.services.CmpEmailTest</td><td><a href="#m7"><b>CreateEmail</b>  </a></td><td class="numi">1</td><td>1687163709545</td><td class="numi">26906</td></tr>
+<tr class="passedeven"><td>org.hamropatro.multishot.services.EmailTest</td><td><a href="#m8"><b>CreateEmail</b>  </a></td><td class="numi">1</td><td>1687163612094</td><td class="numi">19740</td></tr>
+</table>
+<h1>Audience</h1>
+<h2 id="m1">org.hamropatro.campaign.services.ServiceMessageTest:CreateServiceMessage</h2>
+<div>
+<div class="stacktrace">org.openqa.selenium.ElementNotInteractableException: element not interactable
+  (Session info: chrome=114.0.5735.133)
+Build info: version: &apos;4.10.0&apos;, revision: &apos;c14d967899&apos;
+System info: os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.2.6-76060206-generic&apos;, java.version: &apos;19.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [da09f60740c465b41bd35ea7c3febf09, sendKeysToElement {id=C51F041E78C31CC5243E19DD0129AB4C_element_22, value=[Ljava.lang.CharSequence;@21079a12}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.133, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /tmp/.com.google.Chrome.BpBeb9}, goog:chromeOptions: {debuggerAddress: localhost:40607}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), se:cdp: ws://localhost:40607/devtoo..., se:cdpVersion: 114.0.5735.133, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on linux (da09f60740c465b41bd35ea7c3febf09)] -&gt; id: title]
+Session ID: da09f60740c465b41bd35ea7c3febf09
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:199)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:132)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:531)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:242)
+	at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:111)
+	at org.hamropatro.campaign.services.ServiceMessageTest.CreateServiceMessage(ServiceMessageTest.java:56)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+... Removed 25 stack frames</div>
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m2">org.hamropatro.brokenLinks.BrokenLinksTest:LinkTest</h2>
+<div>
+<div class="stacktrace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&quot;root&quot;]/div/div/div/div/button&quot;}
+  (Session info: chrome=114.0.5735.133)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.10.0&apos;, revision: &apos;c14d967899&apos;
+System info: os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.2.6-76060206-generic&apos;, java.version: &apos;19.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [c05ec74927c7b0f5a4e7cacb2fac6600, findElement {using=xpath, value=//*[@id=&quot;root&quot;]/div/div/div/div/button}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.133, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /tmp/.com.google.Chrome.OZnB7e}, goog:chromeOptions: {debuggerAddress: localhost:41567}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), se:cdp: ws://localhost:41567/devtoo..., se:cdpVersion: 114.0.5735.133, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: c05ec74927c7b0f5a4e7cacb2fac6600
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:199)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:132)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:531)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at org.hamropatro.util.LoginUtil.Login(LoginUtil.java:35)
+	at org.hamropatro.brokenLinks.BrokenLinksTest.LinkTest(BrokenLinksTest.java:27)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+... Removed 25 stack frames</div>
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m3">org.hamropatro.campaign.services.CmpGeneralPushTest:CreateGeneralPush</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m4">org.hamropatro.campaign.services.CmpShortServiceMessageTest:CreateShortServiceMessage</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m5">org.hamropatro.segment.SegmentTest:CreateNewSegment</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m6">org.hamropatro.login.LoginTest:TestLogin</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m7">org.hamropatro.campaign.services.CmpEmailTest:CreateEmail</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m8">org.hamropatro.multishot.services.EmailTest:CreateEmail</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+</body></html>

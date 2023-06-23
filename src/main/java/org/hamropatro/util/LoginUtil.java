@@ -1,8 +1,9 @@
 package org.hamropatro.util;
 
-import org.hamropatro.segment.CreateSegment;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.Set;
@@ -23,7 +24,6 @@ public class LoginUtil {
     public LoginUtil(WebDriver driver) {
         this.driver = driver;
     }
-
     public void Login() {
         Configuration config = new Configuration();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
