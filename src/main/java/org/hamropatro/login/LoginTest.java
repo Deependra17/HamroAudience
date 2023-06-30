@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 
 public class LoginTest {
-  private final WebDriver driver = new ChromeDriver();
+  public final WebDriver driver = new ChromeDriver();
    ChromeOptions options= new ChromeOptions();
     LoginUtil loginUtil = new LoginUtil(driver);
     ScreenShots src= new ScreenShots();
@@ -26,6 +26,7 @@ public class LoginTest {
     public void TestLogin() {
         options.addArguments("-no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
+
         loginUtil.Login();
         parentHandle();
         String expectedTitle = "Hamro Audience";

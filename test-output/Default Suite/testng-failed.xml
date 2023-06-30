@@ -8,11 +8,37 @@
           <include name="CreateServiceMessage"/>
         </methods>
       </class> <!-- org.hamropatro.campaign.services.ServiceMessageTest -->
-      <class name="org.hamropatro.brokenLinks.BrokenLinksTest">
+      <class name="org.hamropatro.multishot.services.GeneralPushTest">
         <methods>
-          <include name="LinkTest"/>
+          <include name="CreateGeneralPush"/>
         </methods>
-      </class> <!-- org.hamropatro.brokenLinks.BrokenLinksTest -->
+      </class> <!-- org.hamropatro.multishot.services.GeneralPushTest -->
+      <class name="org.hamropatro.multishot.services.EmailTest">
+        <methods>
+          <include name="CreateEmail"/>
+        </methods>
+      </class> <!-- org.hamropatro.multishot.services.EmailTest -->
+      <class name="org.hamropatro.multishot.services.ShortServiceMessageTest">
+        <methods>
+          <include name="CreateShortServiceMessage"/>
+        </methods>
+      </class> <!-- org.hamropatro.multishot.services.ShortServiceMessageTest -->
+      <class name="org.hamropatro.multishot.services.ServiceMessageTest">
+        <methods>
+          <include name="CreateServiceMessage"/>
+        </methods>
+      </class> <!-- org.hamropatro.multishot.services.ServiceMessageTest -->
+      <class name="org.hamropatro.campaign.services.CmpShortServiceMessageTest">
+        <methods>
+          <include name="CreateShortServiceMessage"/>
+        </methods>
+      </class> <!-- org.hamropatro.campaign.services.CmpShortServiceMessageTest -->
+      <class name="org.hamropatro.login.LoginTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="TestLogin"/>
+        </methods>
+      </class> <!-- org.hamropatro.login.LoginTest -->
     </classes>
   </test> <!-- Audience(failed) -->
 </suite> <!-- Failed suite [Default Suite] -->

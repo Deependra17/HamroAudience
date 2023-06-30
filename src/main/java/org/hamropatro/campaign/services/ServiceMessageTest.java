@@ -7,6 +7,10 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import java.time.Duration;
@@ -19,7 +23,6 @@ public class ServiceMessageTest {
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
-    @Test(priority = 1,alwaysRun = true)
     public void CreateServiceMessage() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
@@ -30,12 +33,14 @@ public class ServiceMessageTest {
 
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div[1]/div[1]/div/div[2]")).click();
         System.out.println("Service Message is selected");
-
         Thread.sleep(5000);
-        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
+
+        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(15));
         driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div[1]/form/div/div[2]/div/div/div/div/div/div/label[2]/span[1]/input")).click();
         System.out.println("User list is selected");
-        WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div[1]/form/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div/div/div/span[1]/input")));
+        Thread.sleep(3000);
+
+        WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div[1]/form/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div/div/div/span[1]/input")));
         dropdown.sendKeys("To me");
         dropdown.sendKeys(Keys.ENTER);
         System.out.println("Option 'To me' is selected");
@@ -44,6 +49,9 @@ public class ServiceMessageTest {
         WebElement scheduled = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div[1]/form/div/div[3]/div/div[2]/div[1]/div/div/div/div/div/label/span[1]/input"));
         scheduled.click();
         System.out.println("Schedule button is clicked");
+
+        driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div[1]/form/div/div[3]/div/div[1]/div[2]/div/div/div/div/div/label/span[1]/input")).click();
+        System.out.println("Dry run is clicked");
 
         driver.findElement(By.id("subtitle")).sendKeys("This is a Subtitle");
         System.out.println("Subtitle is entered");
@@ -65,16 +73,49 @@ public class ServiceMessageTest {
         System.out.println("Create campaign button is clicked");
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement popoverElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div/div/div/div[2]/div")));
-        WebElement confirmButton = popoverElement.findElement(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[2]"));
+        WebElement popoverElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[4]/div/div/div/div[2]/div")));
+        WebElement confirmButton = popoverElement.findElement(By.xpath("/html/body/div[4]/div/div/div/div[2]/div/div[2]/button[2]"));
         confirmButton.click();
         System.out.println("Confirmed Yes");
-        System.out.println("Service message is created");
+        System.out.println("Service message is created successfully");
+        Thread.sleep(5000);
+    }
+    @BeforeMethod
+    public void BeforeMethod() throws InterruptedException {
+        CreateServiceMessage();
+        Thread.sleep(3000);
+    }
+    @Test
+    public void VerifyServiceMessage() {
+        String expectedTarget = "To me UL";
+        String actualTarget = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]")).getText();
+        System.out.println("Actual target :"+actualTarget);
+        Assert.assertEquals(actualTarget, expectedTarget, "Campaign  target does not match");
 
+        String expectedStatus = "DRY";
+        String actualStatus = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[2]/div/div/div/span")).getText();
+        System.out.println("Actual Status :"+actualStatus);
+        Assert.assertEquals(actualStatus,expectedStatus, "Status does not match");
 
+        String expectedTitle = "DRYHamro Gifts - This is a Title";
+        WebElement element = driver.findElement(By.xpath( "/html/body/div[1]/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[2]/div/div/div"));
+        String actualTitle = element.getText();
+        System.out.println("Actual Title :"+actualTitle);
+        Assert.assertEquals(actualTitle, expectedTitle, "Campaign title does not match");
 
+        String expectedType = "SM";
+        String actualType = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[3]")).getText();
+        Assert.assertEquals(actualType,expectedType, "Campaign type does not match");
+        System.out.println("Actual Type :"+actualType);
 
-
-       // driver.quit();
+        String expectedAuthor = "dbohara@hamropatro.com";
+        String actualAuthor = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[10]")).getText();
+        Assert.assertEquals(actualAuthor,expectedAuthor, "Author name does not match");
+        System.out.println("Actual Author :"+actualAuthor);
+    }
+    @AfterMethod
+    public void tearDown(ITestResult result) {
+        src.takeScreenshotOnFailure(driver, result);
+        driver.quit();
     }
 }

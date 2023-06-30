@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Pushchimp" preserve-order="true" parallel="none" thread-count="2" annotations="JDK">
+    <listeners>
+        <listener class-name="org.hamropatro.login.LoginTest"/>
+        <listener class-name="org.hamropatro.segment.SegmentTest" />
+        <listener class-name="org.hamropatro.campaign.services.CmpGeneralPushTest"/>
+        <listener class-name="org.hamropatro.campaign.services.ServiceMessageTest"/>
+        <listener class-name="org.hamropatro.campaign.services.CmpShortServiceMessageTest"/>
+        <listener class-name="org.hamropatro.campaign.services.CmpEmailTest"/>
+    </listeners>
+    <test verbose="3" name="Login">
+        <classes>
+            <class name="org.hamropatro.login.LoginTest">
+                <methods>
+                    <include name="TestLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test  verbose="3" name="Segment Tests">
+        <classes>
+            <class name="org.hamropatro.segment.SegmentTest">
+                <methods>
+                    <include name="CreateNewSegment"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="3" name="GeneralPush">
+   <classes>
+       <class name="org.hamropatro.campaign.services.CmpGeneralPushTest">
+           <methods>
+               <include name="CreateGeneralPush"/>
+           </methods>
+       </class>
+   </classes>
+    </test>
+    <test verbose="3" name="ServiceMessage">
+        <classes>
+            <class name="org.hamropatro.campaign.services.ServiceMessageTest">
+                <methods>
+                    <exclude name="CreateServiceMessage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+ <test verbose="3" name="Email">
+     <classes>
+         <class name="org.hamropatro.campaign.services.CmpShortServiceMessageTest">
+             <methods>
+                 <include name="CreateShortServiceMessage"/>
+             </methods>
+         </class>
+     </classes>
+ </test>
+    <test verbose="3" name="SMS" >
+        <classes>
+            <class name="org.hamropatro.campaign.services.CmpShortServiceMessageTest">
+            <methods>
+                <include name="CreateShortServiceMessage"/>
+            </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
