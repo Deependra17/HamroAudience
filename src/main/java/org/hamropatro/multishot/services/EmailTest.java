@@ -36,19 +36,63 @@ public class EmailTest {
 
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div[1]/div[1]/div/div[4]")).click();
         System.out.println("Email is selected");
+        Thread.sleep(5000);
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[2]/div[1]/div/div/div/div/div/div/label[3]/span[1]/input")));
-        element.click();
-        System.out.println("User Tag is selected");
-
-        WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[2]/div[1]/div/div/div/div/div/div/div[3]/div/div/div/div/div/div/div/span[1]/input")));
-        dropdown.sendKeys("To me");
+        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[2]/div[1]/div/div/div/div/div/div/div[1]/div/div/div/div/div/div/div/span[1]/input")));
+        dropdown.sendKeys("Ktm");
         dropdown.sendKeys(Keys.ENTER);
-        System.out.println("Option 'To me' is selected");
+        System.out.println("Option 'ktm' is selected");
         Thread.sleep(3000);
 
+        WebElement dry= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[2]/div[2]/div/div[1]/div[2]/div/div/div/div/div/label/span[1]/input"));
+        dry.click();
+        System.out.println("Dry run is true");
 
-        //driver.quit();
+        WebElement title= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[2]/div[2]/div/div[2]/div/div[1]/div/div/div/div[2]/div/div/input"));
+        title.sendKeys("This is a Automated Multishot Campaign");
+        System.out.println("Camoaign title is Entered");
+
+        WebElement loacl= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[2]/div[2]/div/div[2]/div/div[4]/div[2]/div/div/div[2]/div/div/label/span/input"));
+        loacl.click();
+        System.out.println("Local time is set");
+
+        WebElement gap= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[2]/div[2]/div/div[2]/div/div[5]/div[1]/div/div/div[2]/div/div/input"));
+        gap.sendKeys("1");
+        System.out.println("Days gep is set");
+
+        WebElement subject= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[2]/div[3]/div/div/div[2]/div/div/input"));
+        subject.sendKeys("Automated Email Campaign");
+        System.out.println("Subject is entered");
+
+        WebElement normal= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[2]/div[5]/div[1]/div[1]/div/div[2]/div"));
+        normal.click();
+        System.out.println("Normal Email is Selected");
+        Thread.sleep(3000);
+
+        WebElement text= driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[4]/div/form/div[2]/div[5]/div[2]/div/div[2]/div/div/div[2]/div/div[2]/div"));
+        text.sendKeys("This is a Normal Email");
+        System.out.println("Normal Email text");
+
+//        WebElement load= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[3]/div/div[2]/button[3]"));
+//        load.click();
+//        System.out.println("Load Template button is clicked");
+//
+//        WebElement apply= driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div[2]/div[2]/div/div[1]/div[1]/div[3]/button"));
+//        apply.click();
+//        System.out.println("Apply button is clicked");
+
+        WebElement Confirm= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[4]/div/div/div/div[1]/button"));
+        Confirm.click();
+        System.out.println("Create button is clicked");
+
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement popoverElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div/div/div/div[2]/div")));
+        WebElement confirmButton = popoverElement.findElement(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]"));
+        confirmButton.click();
+        System.out.println("Confirmed Yes");
+        System.out.println("Template email is created successfully");
+
+        driver.quit();
     }
 }

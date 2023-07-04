@@ -41,17 +41,28 @@ public class CmpGeneralPushTest {
         System.out.println("Option 'ktm' is selected");
         Thread.sleep(3000);
 
-        driver.findElement(By.id("scheduled")).click();
+        WebElement schedule= driver.findElement(By.id("scheduled"));
+        schedule.click();
         System.out.println("Schedule button is clicked");
 
-        driver.findElement(By.id("isDryRun")).click();
+        WebElement dry= driver.findElement(By.id("isDryRun"));
+        dry.click();
         System.out.println("Dry run is clicked");
 
-        driver.findElement(By.id("title")).sendKeys("This is a Automated GeneralPush");
-        driver.findElement(By.id("detailMessage")).sendKeys("Hello Everyone! ");
-        driver.findElement(By.id("deeplink")).sendKeys("hamropatro://app/news_browser/https://l.hamropatro.com");
+        WebElement Title= driver.findElement(By.id("title"));
+        Title.sendKeys("This is a Automated GeneralPush");
+        System.out.println("Title is entered");
 
-        driver.findElement(By.id("theme-btn")).click();
+        WebElement Description= driver.findElement(By.id("detailMessage"));
+        Description.sendKeys("Hello Everyone! ");
+        System.out.println("Description is enterd");
+
+        WebElement Deeplink= driver.findElement(By.id("deeplink"));
+        Deeplink.sendKeys("hamropatro://app/news_browser/https://l.hamropatro.com");
+        System.out.println("Deeplink is entered");
+
+        WebElement CreateCampaign= driver.findElement(By.id("theme-btn"));
+        CreateCampaign.click();
         System.out.println("Create campaign button is clicked");
         Thread.sleep(3000);
 

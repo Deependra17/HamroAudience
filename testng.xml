@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Pushchimp" preserve-order="true" parallel="none" thread-count="2" annotations="JDK">
+<suite name="Pushchimp" preserve-order="true" parallel="none" thread-count="2" annotations="JDK" >
     <listeners>
         <listener class-name="org.hamropatro.login.LoginTest"/>
         <listener class-name="org.hamropatro.segment.SegmentTest" />
@@ -13,7 +13,7 @@
         <classes>
             <class name="org.hamropatro.login.LoginTest">
                 <methods>
-                    <include name="TestLogin"/>
+                    <include name="TestLogin" invocation-numbers="1"/>
                 </methods>
             </class>
         </classes>
