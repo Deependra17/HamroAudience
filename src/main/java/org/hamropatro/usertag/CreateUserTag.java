@@ -1,6 +1,5 @@
 package org.hamropatro.usertag;
 
-import com.github.javafaker.Faker;
 import org.hamropatro.util.CustomListener;
 import org.hamropatro.util.LoginUtil;
 import org.hamropatro.util.ScreenShots;
@@ -14,7 +13,6 @@ public class CreateUserTag {
     private final WebDriver driver = new ChromeDriver();
     LoginUtil loginUtil = new LoginUtil(driver);
     ScreenShots src= new ScreenShots();
-    Faker faker = new Faker();
 
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());

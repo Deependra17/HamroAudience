@@ -1,65 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Pushchimp" preserve-order="true" parallel="none" thread-count="2" annotations="JDK" >
+<suite name="Pushchimp" preserve-order="true" parallel="true" thread-count="2" annotations="JDK" >
     <listeners>
-        <listener class-name="org.hamropatro.login.LoginTest"/>
-        <listener class-name="org.hamropatro.segment.SegmentTest" />
-        <listener class-name="org.hamropatro.campaign.services.CmpGeneralPushTest"/>
-        <listener class-name="org.hamropatro.campaign.services.ServiceMessageTest"/>
-        <listener class-name="org.hamropatro.campaign.services.CmpShortServiceMessageTest"/>
-        <listener class-name="org.hamropatro.campaign.services.CmpEmailTest"/>
+        <listener class-name="org.testng.reporters.EmailableReporter"/>
+        <listener class-name="org.testng.reporters.FailedReporter"/>
     </listeners>
-    <test verbose="3" name="Login">
+    <test name="Testing for Login" enabled="true" >
         <classes>
             <class name="org.hamropatro.login.LoginTest">
                 <methods>
-                    <include name="TestLogin" invocation-numbers="1"/>
+                    <include name="TestLogin"/>
                 </methods>
             </class>
         </classes>
     </test>
-    <test  verbose="3" name="Segment Tests">
+    <test name="Segment" enabled="false">
         <classes>
             <class name="org.hamropatro.segment.SegmentTest">
+            <methods>
+                <include name="VerifySegmentName"/>
+            </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="General Push test" enabled="true">
+        <classes>
+            <class name="org.hamropatro.campaign.services.CmpGeneralPushTest">
                 <methods>
-                    <include name="CreateNewSegment"/>
+                    <include name="VerifyGeneralPush"/>
                 </methods>
             </class>
         </classes>
     </test>
-    <test verbose="3" name="GeneralPush">
-   <classes>
-       <class name="org.hamropatro.campaign.services.CmpGeneralPushTest">
-           <methods>
-               <include name="CreateGeneralPush"/>
-           </methods>
-       </class>
-   </classes>
-    </test>
-    <test verbose="3" name="ServiceMessage">
+    <test name="Service message test" enabled="true">
         <classes>
             <class name="org.hamropatro.campaign.services.ServiceMessageTest">
                 <methods>
-                    <exclude name="CreateServiceMessage"/>
+                    <include name="VerifyServiceMessage"/>
                 </methods>
             </class>
         </classes>
     </test>
- <test verbose="3" name="Email">
-     <classes>
-         <class name="org.hamropatro.campaign.services.CmpShortServiceMessageTest">
-             <methods>
-                 <include name="CreateShortServiceMessage"/>
-             </methods>
-         </class>
-     </classes>
- </test>
-    <test verbose="3" name="SMS" >
+    <test name="SMS test" parallel="none" enabled="true">
         <classes>
             <class name="org.hamropatro.campaign.services.CmpShortServiceMessageTest">
-            <methods>
-                <include name="CreateShortServiceMessage"/>
-            </methods>
+                <methods>
+                    <include name="VerifySms"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Email test" parallel="none" enabled="true">
+        <classes>
+            <class name="org.hamropatro.campaign.services.CmpEmailTest">
+                <methods>
+                    <include name="VerifyEmail"/>
+                </methods>
             </class>
         </classes>
     </test>

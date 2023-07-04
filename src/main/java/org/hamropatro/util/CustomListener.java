@@ -1,8 +1,9 @@
 package org.hamropatro.util;
 
-import org.testng.ITestContext;
-import org.testng.ITestListener;
-import org.testng.ITestResult;
+import org.testng.*;
+import org.testng.xml.XmlSuite;
+
+import java.util.List;
 
 public class CustomListener implements ITestListener{
 

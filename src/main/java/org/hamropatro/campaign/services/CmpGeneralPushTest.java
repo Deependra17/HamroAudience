@@ -77,7 +77,7 @@ public class CmpGeneralPushTest {
     @BeforeMethod
     private void BeforeMethod() throws InterruptedException {
         CreateGeneralPush();
-        Thread.sleep(3000);
+        Thread.sleep(4000);
     }
     @Test
     public void VerifyGeneralPush(){
