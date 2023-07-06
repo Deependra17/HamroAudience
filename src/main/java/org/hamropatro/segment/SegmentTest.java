@@ -12,7 +12,6 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import java.time.Duration;
 
-
 @Listeners(CustomListener.class)
 public class SegmentTest {
    private final WebDriver driver = new ChromeDriver();
@@ -40,6 +39,11 @@ public class SegmentTest {
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/form/div[4]/div[4]/div/div/div/div/button")).click();
         System.out.println("Add button has been clicked");
         Thread.sleep(5000);
+
+//        WebElement dropdownMenu = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/form/div[4]/div[1]/div/div/div/div/div/div"));
+//        WebElement dropdownMenuItem = dropdownMenu.findElement(By.xpath("/html/body/div[1]/div/div[2]/form/div[4]/div[1]/div/div/div/div/div/div/div/span[1]/input"));
+//        dropdownMenuItem.click();
+
 
         driver.findElement(By.xpath("//*[@id=\"theme-btn\"]")).click();
         System.out.println("Create segment button has been clicked");

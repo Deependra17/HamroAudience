@@ -1,5 +1,6 @@
 package org.hamropatro.login;
 
+import org.hamropatro.util.CustomListener;
 import org.hamropatro.util.LoginUtil;
 import org.hamropatro.util.ScreenShots;
 import org.openqa.selenium.WebDriver;
@@ -8,10 +9,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 
-
+@Listeners(CustomListener.class)
 public class LoginTest {
   public final WebDriver driver = new ChromeDriver();
    ChromeOptions options= new ChromeOptions();
@@ -22,7 +24,7 @@ public class LoginTest {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
 
-    @Test( alwaysRun = true)
+    @Test()
     public void TestLogin() {
         options.addArguments("-no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
@@ -31,6 +33,7 @@ public class LoginTest {
         parentHandle();
         String expectedTitle = "Hamro Audience";
         String actualTitle = driver.getTitle();
+        System.out.println(actualTitle);
         Assert.assertEquals(actualTitle, expectedTitle, "Hamro Audience Failed!");
     }
     @AfterMethod

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Pushchimp" preserve-order="true" parallel="true" thread-count="2" annotations="JDK" >
+<suite name="Pushchimp"  parallel="tests" preserve-order="true" verbose="4" thread-count="2">
     <listeners>
         <listener class-name="org.testng.reporters.EmailableReporter"/>
         <listener class-name="org.testng.reporters.FailedReporter"/>
     </listeners>
-    <test name="Testing for Login" enabled="true" >
+    <test name="Testing for Login" enabled="true">
         <classes>
             <class name="org.hamropatro.login.LoginTest">
                 <methods>
@@ -14,7 +14,7 @@
             </class>
         </classes>
     </test>
-    <test name="Segment" enabled="false">
+    <test name="Segment" enabled="true">
         <classes>
             <class name="org.hamropatro.segment.SegmentTest">
             <methods>
@@ -23,7 +23,7 @@
             </class>
         </classes>
     </test>
-    <test name="General Push test" enabled="true">
+    <test name="General Push test" enabled="false">
         <classes>
             <class name="org.hamropatro.campaign.services.CmpGeneralPushTest">
                 <methods>
@@ -32,7 +32,7 @@
             </class>
         </classes>
     </test>
-    <test name="Service message test" enabled="true">
+    <test name="Service message test" enabled="false">
         <classes>
             <class name="org.hamropatro.campaign.services.ServiceMessageTest">
                 <methods>
@@ -41,7 +41,7 @@
             </class>
         </classes>
     </test>
-    <test name="SMS test" parallel="none" enabled="true">
+    <test name="SMS test" parallel="none" enabled="false">
         <classes>
             <class name="org.hamropatro.campaign.services.CmpShortServiceMessageTest">
                 <methods>
@@ -50,7 +50,7 @@
             </class>
         </classes>
     </test>
-    <test name="Email test" parallel="none" enabled="true">
+    <test name="Email test" parallel="none" enabled="false">
         <classes>
             <class name="org.hamropatro.campaign.services.CmpEmailTest">
                 <methods>

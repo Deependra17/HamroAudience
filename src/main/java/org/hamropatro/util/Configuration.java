@@ -3,7 +3,6 @@ package org.hamropatro.util;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Driver;
 
 public class Configuration {
     public String getUrl() {

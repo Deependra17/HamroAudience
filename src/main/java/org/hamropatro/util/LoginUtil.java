@@ -2,6 +2,7 @@ package org.hamropatro.util;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
 
@@ -45,7 +46,7 @@ public class LoginUtil {
         Set<String> handles = driver.getWindowHandles();
         if (handles.size() <= 1) {
             System.out.println("No new windows found.");
-            return; // No need to switch if there are no new windows
+            return;
         }
         for (String handle : handles) {
             if (!handle.equals(parentHandle)) {
@@ -55,17 +56,17 @@ public class LoginUtil {
             }
         }
 
-        driver.findElement(By.xpath("//*[@id=\"identifierId\"]")).sendKeys(config.getEmail());
+        WebElement email= driver.findElement(By.xpath("//*[@id=\"identifierId\"]"));
+        email.sendKeys(config.getEmail());
         driver.findElement(By.xpath("//*[@id=\"identifierNext\"]")).click();
         System.out.println("Email is Entered Successfully");
 
-        driver.findElement(By.cssSelector("#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input")).sendKeys(config.getPassword());
+        WebElement password= driver.findElement(By.cssSelector("#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input"));
+        password.sendKeys(config.getPassword());
         System.out.println("password is Entered successfully");
 
         driver.findElement(By.xpath("//*[@id=\"passwordNext\"]")).click();
         System.out.println("User logged in successfully");
-
     }
-
 }
 
