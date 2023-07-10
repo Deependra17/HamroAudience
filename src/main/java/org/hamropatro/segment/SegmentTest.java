@@ -68,7 +68,7 @@ public class SegmentTest {
         Assert.assertEquals(actualAuthor,expectedAuthor,"Author does not match");
     }
     @AfterMethod
-    public void TearDown(ITestResult result){
+    public void TearDown(ITestResult result){      
         src.takeScreenshotOnFailure(driver, result);
         driver.quit();
     }

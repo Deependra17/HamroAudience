@@ -74,24 +74,16 @@ public class EmailTest {
         text.sendKeys("This is a Normal Email");
         System.out.println("Normal Email text");
 
-//        WebElement load= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[3]/div/div[2]/button[3]"));
-//        load.click();
-//        System.out.println("Load Template button is clicked");
-//
-//        WebElement apply= driver.findElement(By.xpath("/html/body/div[5]/div/div[2]/div/div[2]/div[2]/div/div[1]/div[1]/div[3]/button"));
-//        apply.click();
-//        System.out.println("Apply button is clicked");
-
         WebElement Confirm= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[4]/div/div/div/div[1]/button"));
         Confirm.click();
         System.out.println("Create button is clicked");
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement popoverElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div/div/div/div[2]/div")));
-        WebElement confirmButton = popoverElement.findElement(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]"));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebElement popoverElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[4]/div/div/div/div[2]/div/div")));
+        WebElement confirmButton = popoverElement.findElement(By.xpath("/html/body/div[4]/div/div/div/div[2]/div/div[2]/button[2]"));
         confirmButton.click();
         System.out.println("Confirmed Yes");
-        System.out.println("Template email is created successfully");
+        System.out.println("Normal email is created successfully");
 
         driver.quit();
     }

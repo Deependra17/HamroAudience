@@ -10,8 +10,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class ScreenShots {
-    private WebDriver driver;
-
     public void takeScreenshotOnFailure(WebDriver webdriver, ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
             TakesScreenshot screenshot = (TakesScreenshot) webdriver;

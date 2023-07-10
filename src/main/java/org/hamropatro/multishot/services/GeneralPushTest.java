@@ -20,7 +20,7 @@ public class GeneralPushTest {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
     @Test(priority = 1,alwaysRun = true)
-    public void CreateGeneralPush() throws InterruptedException {
+    public void CreateGeneralPush() throws InterruptedException{
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         loginUtil.Login();
         parentHandle();
@@ -34,12 +34,13 @@ public class GeneralPushTest {
         myElement.click();
         Thread.sleep(4000);
 
-        WebElement radioButton= driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div[1]/form/div/div[2]/div/div/div/div/div/div/label[2]/span[1]/input"));
+        WebElement radioButton= driver.findElement(By.xpath("//*[@id=\"targetMode\"]/label[2]/span[1]/input"));
         radioButton.click();
         System.out.println("User list is selected");
+        Thread.sleep(3000);
 
         WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
-        WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div[1]/form/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div/div/div/span[1]/input")));
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div[1]/form/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div/div/div/span[1]/input")));
         dropdown.sendKeys("To me");
         dropdown.sendKeys(Keys.ENTER);
         System.out.println("Option 'TO deepen' is selected");
@@ -64,31 +65,29 @@ public class GeneralPushTest {
 
         driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div[1]/form/div/div[4]/div/div[2]"));
 
-        WebElement Title= driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div[1]/form/div/div[4]/div/div[2]/div/div[1]/div[1]/div/div/div[2]/div/div/input"));
+        WebElement Title= driver.findElement(By.xpath("//*[@id=\"title\"]"));
         Title.sendKeys("This is a title");
         System.out.println("Title is Entered");
 
-        WebElement description= driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div[1]/form/div/div[4]/div/div[2]/div/div[1]/div[2]/div/div/div[2]/div/div"));
-        description.sendKeys("This is a automated genera; push from hamro patro");
+        WebElement description= driver.findElement(By.xpath("//*[@id=\"detailMessage\"]"));
+        description.sendKeys("This is a automated general push from hamro patro");
         System.out.println("Description is entered");
 
-        WebElement deepLink= driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div[1]/form/div/div[4]/div/div[2]/div/div[4]/div/div/div/div[2]/div/div/input"));
+        WebElement deepLink= driver.findElement(By.xpath("//*[@id=\"deeplink\"]"));
         deepLink.sendKeys("https://www.hamropatro.com/");
         System.out.println("Deeplink is entered");
 
-        WebElement ConfirmButton=driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div[1]/form/div/div[5]/div/div/div/div/div/div/div/div[1]/button"));
+        WebElement ConfirmButton=driver.findElement(By.xpath("//*[@id=\"theme-btn\"]"));
         ConfirmButton.click();
         System.out.println("Create Campaign button is clicked");
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement popoverElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[4]/div/div/div/div[2]/div")));
-        WebElement confirmButton = popoverElement.findElement(By.xpath("/html/body/div[4]/div/div/div/div[2]/div/div[2]/button[2]"));
+        WebElement popoverElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div/div/div/div[2]/div")));
+        WebElement confirmButton = popoverElement.findElement(By.xpath("/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]"));
         confirmButton.click();
         System.out.println("Confirmed Yes");
         System.out.println("Service message is created successfully");
         Thread.sleep(5000);
-
-
 
         driver.quit();
 

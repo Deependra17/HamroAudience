@@ -25,7 +25,7 @@ public class LoginTest {
     }
 
     @Test()
-    public void TestLogin() {
+    public void TestLogin(){
         options.addArguments("-no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
 
@@ -33,7 +33,7 @@ public class LoginTest {
         parentHandle();
         String expectedTitle = "Hamro Audience";
         String actualTitle = driver.getTitle();
-        System.out.println(actualTitle);
+        System.out.println("Actual result: "+actualTitle);
         Assert.assertEquals(actualTitle, expectedTitle, "Hamro Audience Failed!");
     }
     @AfterMethod

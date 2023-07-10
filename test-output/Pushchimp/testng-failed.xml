@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="2" parallel="tests" name="Failed suite [Pushchimp]" guice-stage="DEVELOPMENT" verbose="4">
+<suite thread-count="2" parallel="tests" data-provider-thread-count="2" name="Failed suite [Pushchimp]" guice-stage="DEVELOPMENT" verbose="4">
   <listeners>
     <listener class-name="org.testng.reporters.EmailableReporter"/>
     <listener class-name="org.testng.reporters.FailedReporter"/>
   </listeners>
-  <test thread-count="2" parallel="tests" name="Segment(failed)" verbose="4">
-    <classes>
-      <class name="org.hamropatro.segment.SegmentTest">
-        <methods>
-          <include name="VerifySegmentName"/>
-          <include name="BeforeMethod"/>
-          <include name="TearDown"/>
-        </methods>
-      </class> <!-- org.hamropatro.segment.SegmentTest -->
-    </classes>
-  </test> <!-- Segment(failed) -->
   <test thread-count="2" parallel="tests" name="Testing for Login(failed)" verbose="4">
     <classes>
       <class name="org.hamropatro.login.LoginTest">

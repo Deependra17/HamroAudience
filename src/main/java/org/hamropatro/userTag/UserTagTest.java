@@ -1,4 +1,4 @@
-package org.hamropatro.usertag;
+package org.hamropatro.userTag;
 
 import org.hamropatro.util.CustomListener;
 import org.hamropatro.util.LoginUtil;
@@ -9,7 +9,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 @Listeners(CustomListener.class)
-public class CreateUserTag {
+public class UserTagTest {
     private final WebDriver driver = new ChromeDriver();
     LoginUtil loginUtil = new LoginUtil(driver);
     ScreenShots src= new ScreenShots();
@@ -19,7 +19,7 @@ public class CreateUserTag {
     }
     @Test(alwaysRun = true)
 
-    public void CreateNewSegment(){
+    public void CreateUserTag(){
         loginUtil.Login();
         parentHandle();
     }

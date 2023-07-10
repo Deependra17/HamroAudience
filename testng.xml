@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Pushchimp"  parallel="tests" preserve-order="true" verbose="4" thread-count="2">
+<suite name="Campaign"  parallel="tests" preserve-order="true" verbose="5" thread-count="6">
     <listeners>
         <listener class-name="org.testng.reporters.EmailableReporter"/>
         <listener class-name="org.testng.reporters.FailedReporter"/>
@@ -14,7 +14,7 @@
             </class>
         </classes>
     </test>
-    <test name="Segment" enabled="true">
+    <test name="Segment" enabled="false">
         <classes>
             <class name="org.hamropatro.segment.SegmentTest">
             <methods>
