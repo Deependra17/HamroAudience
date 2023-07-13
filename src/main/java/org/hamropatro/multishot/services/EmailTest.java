@@ -9,12 +9,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class EmailTest {
-    private final WebDriver driver = new ChromeDriver();
-    LoginUtil loginUtil = new LoginUtil(driver);
+    private WebDriver driver;
+    LoginUtil loginUtil;
     ScreenShots src= new ScreenShots();
 
     public void parentHandle() {
@@ -22,7 +23,9 @@ public class EmailTest {
     }
 
     @Test(alwaysRun = true)
-    public void CreateEmail() throws InterruptedException {
+    @Parameters("browser")
+    public void CreateEmail(String browser) throws InterruptedException {
+        loginUtil= new LoginUtil(browser);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
         parentHandle();

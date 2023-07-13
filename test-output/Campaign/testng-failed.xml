@@ -1,51 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="6" parallel="tests" name="Failed suite [Campaign]" guice-stage="DEVELOPMENT" verbose="5">
+<suite thread-count="3" parallel="tests" name="Failed suite [Campaign]" guice-stage="DEVELOPMENT" verbose="5">
   <listeners>
     <listener class-name="org.testng.reporters.EmailableReporter"/>
     <listener class-name="org.testng.reporters.FailedReporter"/>
   </listeners>
-  <test thread-count="6" parallel="tests" name="Service message test(failed)" verbose="5">
+  <test thread-count="3" parallel="tests" name="Segment(failed)" verbose="5">
+    <parameter name="browser" value="Firefox"/>
     <classes>
-      <class name="org.hamropatro.campaign.services.ServiceMessageTest">
+      <class name="org.hamropatro.segment.SegmentTest">
         <methods>
-          <include name="VerifyServiceMessage"/>
-          <include name="tearDown"/>
+          <include name="VerifySegmentName"/>
           <include name="BeforeMethod"/>
+          <include name="TearDown"/>
         </methods>
-      </class> <!-- org.hamropatro.campaign.services.ServiceMessageTest -->
+      </class> <!-- org.hamropatro.segment.SegmentTest -->
     </classes>
-  </test> <!-- Service message test(failed) -->
-  <test thread-count="6" parallel="tests" name="General Push test(failed)" verbose="5">
-    <classes>
-      <class name="org.hamropatro.campaign.services.CmpGeneralPushTest">
-        <methods>
-          <include name="BeforeMethod"/>
-          <include name="tearDown"/>
-          <include name="VerifyGeneralPush"/>
-        </methods>
-      </class> <!-- org.hamropatro.campaign.services.CmpGeneralPushTest -->
-    </classes>
-  </test> <!-- General Push test(failed) -->
-  <test thread-count="6" name="Email test(failed)" verbose="5">
-    <classes>
-      <class name="org.hamropatro.campaign.services.CmpEmailTest">
-        <methods>
-          <include name="BeforeMethod"/>
-          <include name="tearDown"/>
-          <include name="VerifyEmail"/>
-        </methods>
-      </class> <!-- org.hamropatro.campaign.services.CmpEmailTest -->
-    </classes>
-  </test> <!-- Email test(failed) -->
-  <test thread-count="6" parallel="tests" name="Testing for Login(failed)" verbose="5">
-    <classes>
-      <class name="org.hamropatro.login.LoginTest">
-        <methods>
-          <include name="tearDown"/>
-          <include name="TestLogin"/>
-        </methods>
-      </class> <!-- org.hamropatro.login.LoginTest -->
-    </classes>
-  </test> <!-- Testing for Login(failed) -->
+  </test> <!-- Segment(failed) -->
 </suite> <!-- Failed suite [Campaign] -->

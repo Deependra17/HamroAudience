@@ -3,6 +3,8 @@ package org.hamropatro.util;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
 import java.util.Set;
@@ -20,10 +22,14 @@ public class LoginUtil {
 
     private String parentHandle;
 
-    public LoginUtil(WebDriver driver) {
-        this.driver = driver;
+    public LoginUtil(String browser) {
+        if (browser.equals("Firefox")) {
+            driver = new FirefoxDriver();
+        } else {
+            driver = new ChromeDriver();
+        }
     }
-    public void Login() {
+    public void Login() throws InterruptedException {
         Configuration config = new Configuration();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.get(config.getUrl());
@@ -56,10 +62,11 @@ public class LoginUtil {
 
         WebElement email= driver.findElement(By.xpath("//*[@id=\"identifierId\"]"));
         email.sendKeys(config.getEmail());
-        driver.findElement(By.xpath("//*[@id=\"identifierNext\"]")).click();
+        driver.findElement(By.xpath("//div[@id=\"identifierNext\"]")).click();
+        Thread.sleep(3000);
         System.out.println("Email is Entered Successfully");
 
-        WebElement password= driver.findElement(By.cssSelector("#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input"));
+        WebElement password= driver.findElement(By.xpath("//input[@type=\"password\"]"));
         password.sendKeys(config.getPassword());
         System.out.println("password is Entered successfully");
 

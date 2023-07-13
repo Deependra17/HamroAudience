@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="6" parallel="tests" name="Failed suite [Failed suite [Campaign]]" guice-stage="DEVELOPMENT" verbose="5">
+<suite thread-count="3" parallel="tests" name="Failed suite [Campaign]" guice-stage="DEVELOPMENT" verbose="5">
   <listeners>
     <listener class-name="org.testng.reporters.EmailableReporter"/>
     <listener class-name="org.testng.reporters.FailedReporter"/>
   </listeners>
-  <test thread-count="6" parallel="tests" name="Service message test(failed)(failed)" verbose="5">
+  <test thread-count="3" parallel="tests" name="Segment(failed)" verbose="5">
+    <parameter name="browser" value="Firefox"/>
     <classes>
-      <class name="org.hamropatro.campaign.services.ServiceMessageTest">
+      <class name="org.hamropatro.segment.SegmentTest">
         <methods>
-          <include name="VerifyServiceMessage"/>
-          <include name="tearDown"/>
+          <include name="VerifySegmentName"/>
           <include name="BeforeMethod"/>
+          <include name="TearDown"/>
         </methods>
-      </class> <!-- org.hamropatro.campaign.services.ServiceMessageTest -->
+      </class> <!-- org.hamropatro.segment.SegmentTest -->
     </classes>
-  </test> <!-- Service message test(failed)(failed) -->
-</suite> <!-- Failed suite [Failed suite [Campaign]] -->
+  </test> <!-- Segment(failed) -->
+</suite> <!-- Failed suite [Campaign] -->

@@ -6,7 +6,6 @@ import org.hamropatro.util.ScreenShots;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -14,8 +13,8 @@ import java.time.Duration;
 
 @Listeners(CustomListener.class)
 public class SegmentTest {
-   private final WebDriver driver = new ChromeDriver();
-    LoginUtil loginUtil = new LoginUtil(driver);
+    private WebDriver driver;
+    private LoginUtil loginUtil;
     ScreenShots src= new ScreenShots();
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
@@ -40,18 +39,17 @@ public class SegmentTest {
         System.out.println("Add button has been clicked");
         Thread.sleep(5000);
 
-//        WebElement dropdownMenu = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/form/div[4]/div[1]/div/div/div/div/div/div"));
-//        WebElement dropdownMenuItem = dropdownMenu.findElement(By.xpath("/html/body/div[1]/div/div[2]/form/div[4]/div[1]/div/div/div/div/div/div/div/span[1]/input"));
-//        dropdownMenuItem.click();
-
-
         driver.findElement(By.xpath("//*[@id=\"theme-btn\"]")).click();
         System.out.println("Create segment button has been clicked");
         Thread.sleep(3000);
         System.out.println("Segment is created successfully");
     }
     @BeforeMethod
-    public void BeforeMethod() throws InterruptedException {
+    @Parameters("browser")
+    public void BeforeMethod(String browser) throws InterruptedException {
+        System.out.println("Browser: " + browser);
+        loginUtil = new LoginUtil(browser);
+        driver = loginUtil.getDriver();
         CreateSegment();
         Thread.sleep(4000);
     }

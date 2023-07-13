@@ -9,16 +9,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
 import java.time.Duration;
 
 @Listeners(CustomListener.class)
 public class CmpGeneralPushTest {
-   private final WebDriver driver = new ChromeDriver();
-    LoginUtil loginUtil = new LoginUtil(driver);
+   private WebDriver driver;
+    LoginUtil loginUtil;
     ScreenShots src= new ScreenShots();
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
@@ -75,7 +73,10 @@ public class CmpGeneralPushTest {
         Thread.sleep(3000);
     }
     @BeforeMethod
-    private void BeforeMethod() throws InterruptedException {
+    @Parameters("browser")
+    private void BeforeMethod(String browser) throws InterruptedException {
+        loginUtil= new LoginUtil(browser);
+        driver = loginUtil.getDriver();
         CreateGeneralPush();
         Thread.sleep(4000);
     }

@@ -4,31 +4,27 @@ import org.hamropatro.util.CustomListener;
 import org.hamropatro.util.LoginUtil;
 import org.hamropatro.util.ScreenShots;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
-
+import org.testng.annotations.*;
 
 @Listeners(CustomListener.class)
 public class LoginTest {
-  public final WebDriver driver = new ChromeDriver();
-   ChromeOptions options= new ChromeOptions();
-    LoginUtil loginUtil = new LoginUtil(driver);
+    private WebDriver driver;
+    LoginUtil loginUtil;
     ScreenShots src= new ScreenShots();
-
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
+    @BeforeMethod
+    @Parameters({"browser"})
+    public  void BeforeMethod(String browser){
+        loginUtil = new LoginUtil(browser);
+        driver = loginUtil.getDriver();
+    }
 
     @Test()
-    public void TestLogin(){
-        options.addArguments("-no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-
+    public void TestLogin() throws InterruptedException {
         loginUtil.Login();
         parentHandle();
         String expectedTitle = "Hamro Audience";

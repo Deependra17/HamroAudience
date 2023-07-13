@@ -6,20 +6,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 
 public class ShortServiceMessageTest {
-    private final WebDriver driver = new ChromeDriver();
-    LoginUtil loginUtil = new LoginUtil(driver);
+    private WebDriver driver;
+    LoginUtil loginUtil;
     ScreenShots src= new ScreenShots();
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
 
     @Test(priority = 1, alwaysRun = true)
-    public void CreateShortServiceMessage() throws InterruptedException {
+    @Parameters("browser")
+    public void CreateShortServiceMessage(String browser) throws InterruptedException {
+        loginUtil= new LoginUtil(browser);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(25));
         loginUtil.Login();
         parentHandle();

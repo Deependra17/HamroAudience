@@ -9,16 +9,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
 import java.time.Duration;
 
 @Listeners(CustomListener.class)
 public class ServiceMessageTest {
-   private final WebDriver driver = new ChromeDriver();
-    LoginUtil loginUtil = new LoginUtil(driver);
+   private WebDriver driver;
+    LoginUtil loginUtil;
     ScreenShots src= new ScreenShots();
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
@@ -81,12 +79,16 @@ public class ServiceMessageTest {
         Thread.sleep(5000);
     }
     @BeforeMethod
-    public void BeforeMethod() throws InterruptedException {
+    @Parameters("browser")
+    public void BeforeMethod(String browser) throws InterruptedException {
+        loginUtil= new LoginUtil(browser);
+        driver= loginUtil.getDriver();
         CreateServiceMessage();
         Thread.sleep(3000);
     }
     @Test
     public void VerifyServiceMessage() {
+
         String expectedTarget = "To me UL";
         String actualTarget = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]")).getText();
         System.out.println("Actual target :"+actualTarget);

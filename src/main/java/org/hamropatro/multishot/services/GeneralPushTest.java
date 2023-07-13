@@ -9,18 +9,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class GeneralPushTest {
-    private final WebDriver driver = new ChromeDriver();
-    LoginUtil loginUtil = new LoginUtil(driver);
+    private WebDriver driver;
+    LoginUtil loginUtil;
     ScreenShots src= new ScreenShots();
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
     @Test(priority = 1,alwaysRun = true)
-    public void CreateGeneralPush() throws InterruptedException{
+    @Parameters("browser")
+    public void CreateGeneralPush(String browser) throws InterruptedException{
+        loginUtil= new LoginUtil(browser);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         loginUtil.Login();
         parentHandle();

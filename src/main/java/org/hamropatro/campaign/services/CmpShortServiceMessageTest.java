@@ -13,12 +13,13 @@ import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class CmpShortServiceMessageTest {
-  private final WebDriver driver = new ChromeDriver();
-    LoginUtil loginUtil = new LoginUtil(driver);
+  private  WebDriver driver;
+  private LoginUtil loginUtil;
     ScreenShots src= new ScreenShots();
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
@@ -70,12 +71,16 @@ public class CmpShortServiceMessageTest {
         Thread.sleep(3000);
     }
         @BeforeMethod
-        public void BeforeMethod() throws InterruptedException {
+        @Parameters("browser")
+        public void BeforeMethod(String browser) throws InterruptedException {
+            loginUtil= new LoginUtil(browser);
+            driver = loginUtil.getDriver();
             CreateShortServiceMessage();
             Thread.sleep(4000);
         }
         @Test
         public void VerifySms(){
+
             String expectedTarget = "To me UL";
             String actualTarget = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]/div/a")).getText();
             System.out.println("Actual target :"+actualTarget);
