@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Campaign" parallel="tests" preserve-order="true" verbose="5" thread-count="3" >
+<suite name="Campaign" parallel="tests" preserve-order="true" verbose="5" thread-count="2" >
     <listeners>
         <listener class-name="org.testng.reporters.EmailableReporter"/>
         <listener class-name="org.testng.reporters.FailedReporter"/>
     </listeners>
     <!--    Test for Chrome-->
-    <test name="Testing for Login using chrome" enabled="true" parallel="true">
+<!--    Login Test-->
+    <test name="Testing for Login using chrome" enabled="true">
         <parameter name="browser" value="Chrome"></parameter>
         <classes>
             <class name="org.hamropatro.login.LoginTest">
@@ -16,7 +17,8 @@
             </class>
         </classes>
     </test>
-    <test name="Segment using chrome" enabled="false" parallel="true">
+<!--    Segment-->
+    <test name="Segment using chrome" enabled="false" parallel="false">
         <parameter name="browser" value="Chrome"></parameter>
         <classes>
             <class name="org.hamropatro.segment.SegmentTest">
@@ -26,6 +28,7 @@
             </class>
         </classes>
     </test>
+<!--    Campaign GP-->
     <test name="General Push test using chrome" enabled="false">
         <parameter name="browser" value="Chrome"></parameter>
         <classes>
@@ -36,6 +39,7 @@
             </class>
         </classes>
     </test>
+<!--    Campaign SM-->
     <test name="Service message test using chrome" enabled="false">
         <parameter name="browser" value="Chrome"></parameter>
         <classes>
@@ -46,6 +50,7 @@
             </class>
         </classes>
     </test>
+<!--    Campaign SMS-->
     <test name="SMS test using chrome" enabled="false">
         <parameter name="browser" value="Chrome"></parameter>
         <classes>
@@ -56,10 +61,55 @@
             </class>
         </classes>
     </test>
+<!--    Campaign Email-->
     <test name="Email test using chrome" enabled="false">
         <parameter name="browser" value="Chrome"></parameter>
         <classes>
             <class name="org.hamropatro.campaign.services.CmpEmailTest">
+                <methods>
+                    <include name="VerifyCmpEmail"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+<!--    Multishot GP-->
+    <test name="Multishot GP Test for chrome" enabled="false">
+        <parameter name="browser" value="Chrome"></parameter>
+        <classes>
+            <class name="org.hamropatro.multishot.services.GeneralPushTest">
+                <methods>
+                    <include name="VerifyPush"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <!--    Multihshot SM-->
+    <test name="Multishot sm Test for chrome" enabled="false">
+        <parameter name="browser" value="Chrome"></parameter>
+        <classes>
+            <class name="org.hamropatro.multishot.services.ServiceMessageTest">
+                <methods>
+                    <include name="VerifySm"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+<!--    Multishot SMS-->
+    <test name="Multishot SMS Test for chrome" enabled="false">
+        <parameter name="browser" value="Chrome"></parameter>
+        <classes>
+            <class name="org.hamropatro.multishot.services.ShortServiceMessageTest">
+                <methods>
+                    <include name="VerifySms"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+<!--    Multihsot Email-->
+    <test name="Multishot Email Test for chrome" enabled="false">
+        <parameter name="browser" value="Chrome"></parameter>
+        <classes>
+            <class name="org.hamropatro.multishot.services.EmailTest">
                 <methods>
                     <include name="VerifyEmail"/>
                 </methods>
@@ -67,9 +117,9 @@
         </classes>
     </test>
 
-
     <!--    Test for firefox-->
-    <test name="Testing for Login - Firefox" enabled="true" parallel="true">
+    <!--    Login Test-->
+    <test name="Testing for Login - Firefox" enabled="true" >
         <parameter name="browser" value="Firefox"></parameter>
         <classes>
             <class name="org.hamropatro.login.LoginTest">
@@ -79,7 +129,8 @@
             </class>
         </classes>
     </test>
-    <test name="Segment" enabled="false" parallel="true">
+<!--    Segment Test-->
+    <test name="Segment" enabled="false" parallel="false">
         <parameter name="browser" value="Firefox"></parameter>
         <classes>
             <class name="org.hamropatro.segment.SegmentTest">
@@ -89,6 +140,7 @@
             </class>
         </classes>
     </test>
+<!--    Campaign GP-->
     <test name="General Push test" enabled="false">
         <parameter name="browser" value="Firefox"></parameter>
         <classes>
@@ -99,6 +151,7 @@
             </class>
         </classes>
     </test>
+<!--    Campaign SM-->
     <test name="Service message test" enabled="false">
         <parameter name="browser" value="Firefox"></parameter>
         <classes>
@@ -109,6 +162,7 @@
             </class>
         </classes>
     </test>
+<!--    Campaign SMS-->
     <test name="SMS test" enabled="false">
         <parameter name="browser" value="Firefox"></parameter>
         <classes>
@@ -119,10 +173,55 @@
             </class>
         </classes>
     </test>
+<!--    Campaign Email-->
     <test name="Email test" enabled="false">
         <parameter name="browser" value="Firefox"></parameter>
         <classes>
             <class name="org.hamropatro.campaign.services.CmpEmailTest">
+                <methods>
+                    <include name="VerifyEmail"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+<!--    Multishot Gp-->
+    <test name="Multishot GP Test for firefox" enabled="false">
+        <parameter name="browser" value="Firefox"></parameter>
+        <classes>
+            <class name="org.hamropatro.multishot.services.GeneralPushTest">
+                <methods>
+                    <include name="VerifyPush"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+<!--    Multishot Sm-->
+    <test name="Multishot sm Test for firefox" enabled="false">
+        <parameter name="browser" value="Firefox"></parameter>
+        <classes>
+            <class name="org.hamropatro.multishot.services.ServiceMessageTest">
+                <methods>
+                    <include name="VerifySm"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+<!--    Multishot SMS-->
+    <test name="Multishot Test for firefox" enabled="false">
+        <parameter name="browser" value="Firefox"></parameter>
+        <classes>
+            <class name="org.hamropatro.multishot.services.ShortServiceMessageTest">
+                <methods>
+                    <include name="VerifySms"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+<!--    Multishot Email-->
+    <test name="Multishot Email Test for firefox" enabled="false">
+        <parameter name="browser" value="Firefox"></parameter>
+        <classes>
+            <class name="org.hamropatro.multishot.services.EmailTest">
                 <methods>
                     <include name="VerifyEmail"/>
                 </methods>

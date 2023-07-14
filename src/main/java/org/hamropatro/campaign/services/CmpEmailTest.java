@@ -80,7 +80,7 @@ public class CmpEmailTest {
         Thread.sleep(4000);
     }
     @Test
-    public void VerifyEmail(){
+    public void VerifyCmpEmail(){
 
         String expectedTarget = "To me UL";
         String actualTarget = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]/div/a")).getText();

@@ -9,6 +9,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import java.time.Duration;
@@ -21,11 +25,7 @@ public class EmailTest {
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
-
-    @Test(alwaysRun = true)
-    @Parameters("browser")
-    public void CreateEmail(String browser) throws InterruptedException {
-        loginUtil= new LoginUtil(browser);
+    public void CreateEmail() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
         parentHandle();
@@ -80,14 +80,54 @@ public class EmailTest {
         WebElement Confirm= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[4]/div/div/div/div[1]/button"));
         Confirm.click();
         System.out.println("Create button is clicked");
+        Thread.sleep(3000);
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        WebElement popoverElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[4]/div/div/div/div[2]/div/div")));
-        WebElement confirmButton = popoverElement.findElement(By.xpath("/html/body/div[4]/div/div/div/div[2]/div/div[2]/button[2]"));
+        WebElement popoverElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role=\"tooltip\"]")));
+        WebElement confirmButton = popoverElement.findElement(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[2]"));
         confirmButton.click();
         System.out.println("Confirmed Yes");
         System.out.println("Normal email is created successfully");
+    }
+    @BeforeMethod
+    @Parameters("browser")
+    public void BeforeMethod(String browser) throws InterruptedException {
+        loginUtil= new LoginUtil(browser);
+        driver= loginUtil.getDriver();
+        CreateEmail();
+        Thread.sleep(3000);
+    }
+    @Test
+    public void VerifyEmail(){
 
+        String expectedTarget="Ktm SE";
+        String actualTarget= driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]")).getText();
+        Assert.assertEquals(actualTarget,expectedTarget,"Target doesnot match");
+        System.out.println("Actual target: "+actualTarget);
+
+        String expectedName="This is a Automated Multishot Campaign";
+        String actualName=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[2]")).getText();
+        Assert.assertEquals(actualName,expectedName,"Campaign name does not match");
+        System.out.println("Actula Name: "+actualName);
+
+        String expectedCmpTitle="DRYAutomated Email Campaign";
+        String actualCmpTitle=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[3]/div/div/div")).getText();
+        Assert.assertEquals(actualCmpTitle,expectedCmpTitle,"Campaign Title does not macth");
+        System.out.println("Actual campaign Title: "+actualCmpTitle);
+
+        String expectedType="EMAIL";
+        String actualType= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[4]")).getText();
+        Assert.assertEquals(actualType,expectedType,"Type does not match");
+        System.out.println("Actual type: "+actualType);
+
+        String expecctedExpireDate="Never";
+        String actualExpectedDate=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[8]")).getText();
+        Assert.assertEquals(actualExpectedDate,expecctedExpireDate,"Expired date does not match");
+        System.out.println("Actual End date: "+actualExpectedDate);
+    }
+    @AfterMethod
+    public void TearDown(ITestResult result){
+        src.takeScreenshotOnFailure(driver, result);
         driver.quit();
     }
 }
