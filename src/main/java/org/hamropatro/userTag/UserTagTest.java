@@ -4,7 +4,6 @@ import org.hamropatro.util.CustomListener;
 import org.hamropatro.util.LoginUtil;
 import org.hamropatro.util.ScreenShots;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -20,7 +19,7 @@ public class UserTagTest {
     }
     @Test(alwaysRun = true)
     @Parameters("browser")
-    public void CreateUserTag(String browser) throws InterruptedException {
+    public void createUserTag(String browser) throws InterruptedException {
         loginUtil= new LoginUtil(browser);
         loginUtil.Login();
         parentHandle();

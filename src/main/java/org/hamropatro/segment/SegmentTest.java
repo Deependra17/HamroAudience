@@ -19,7 +19,7 @@ public class SegmentTest {
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
-    public void CreateSegment() throws InterruptedException {
+    public void createSegment() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         loginUtil.Login();
         parentHandle();
@@ -50,11 +50,11 @@ public class SegmentTest {
         System.out.println("Browser: " + browser);
         loginUtil = new LoginUtil(browser);
         driver = loginUtil.getDriver();
-        CreateSegment();
+        createSegment();
         Thread.sleep(4000);
     }
     @Test
-    public void VerifySegmentName() {
+    public void verifySegmentName() {
         String expectedName = "This is a Automated Segment";
         String actualName = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[3]/div/div[2]/div[1]/div/div/div/div/div/div/table/tbody/tr[2]/td[1]")).getText();
         System.out.println(actualName);
@@ -66,7 +66,7 @@ public class SegmentTest {
         Assert.assertEquals(actualAuthor,expectedAuthor,"Author does not match");
     }
     @AfterMethod
-    public void TearDown(ITestResult result){      
+    public void tearDown(ITestResult result){
         src.takeScreenshotOnFailure(driver, result);
         driver.quit();
     }

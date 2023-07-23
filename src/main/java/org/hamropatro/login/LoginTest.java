@@ -18,13 +18,13 @@ public class LoginTest {
     }
     @BeforeMethod
     @Parameters({"browser"})
-    public  void BeforeMethod(String browser){
+    public  void beforeMethod(String browser){
         loginUtil = new LoginUtil(browser);
         driver = loginUtil.getDriver();
     }
 
     @Test()
-    public void TestLogin() throws InterruptedException {
+    public void testLogin() throws InterruptedException {
         loginUtil.Login();
         parentHandle();
         String expectedTitle = "Hamro Audience";

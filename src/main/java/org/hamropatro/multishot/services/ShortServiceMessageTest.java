@@ -27,7 +27,7 @@ public class ShortServiceMessageTest {
     public void parentHandle(){
         driver.switchTo().window(loginUtil.getParentHandle());
     }
-    public void CreateShortServiceMessage() throws InterruptedException {
+    public void createShortServiceMessage() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
         parentHandle();
@@ -88,14 +88,14 @@ public class ShortServiceMessageTest {
     }
     @BeforeMethod
     @Parameters("browser")
-    public void BeforeMethod(String browser) throws InterruptedException {
+    public void beforeMethod(String browser) throws InterruptedException {
         loginUtil= new LoginUtil(browser);
         driver = loginUtil.getDriver();
-        CreateShortServiceMessage();
+        createShortServiceMessage();
         Thread.sleep(3000);
     }
     @Test
-    private void VerifySms() throws InterruptedException {
+    private void verifySms() throws InterruptedException {
 
         String expectedTarget="To me UL";
         String actualTarget=driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]")).getText();
@@ -125,7 +125,7 @@ public class ShortServiceMessageTest {
 
     }
     @AfterMethod
-    public void TearDown(ITestResult result){
+    public void tearDown(ITestResult result){
         src.takeScreenshotOnFailure(driver, result);
         driver.quit();
     }

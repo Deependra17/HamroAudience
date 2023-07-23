@@ -24,7 +24,7 @@ public class CmpEmailTest {
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
-    public void CreateEmail() throws InterruptedException {
+    public void createEmail() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
         parentHandle();
@@ -73,14 +73,14 @@ public class CmpEmailTest {
     }
     @BeforeMethod
     @Parameters("browser")
-    public void BeforeMethod(String browser) throws InterruptedException {
+    public void beforeMethod(String browser) throws InterruptedException {
         loginUtil=  new LoginUtil(browser);
         driver = loginUtil.getDriver();
-        CreateEmail();
+        createEmail();
         Thread.sleep(4000);
     }
     @Test
-    public void VerifyCmpEmail(){
+    public void verifyCmpEmail(){
 
         String expectedTarget = "To me UL";
         String actualTarget = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]/div/a")).getText();

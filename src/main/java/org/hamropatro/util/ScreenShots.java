@@ -24,7 +24,6 @@ public class ScreenShots {
             }
         }
     }
-
     private String generateFilePath(String testName) {
         String screenshotsDirectory = "/home/hamropatro/IdeaProjects/Audience/src/screenShots";
         String screenshotName = testName + ".png";

@@ -21,7 +21,7 @@ public class ServiceMessageTest {
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
-    public void CreateServiceMessage() throws InterruptedException {
+    public void createServiceMessage() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
         parentHandle();
@@ -80,14 +80,14 @@ public class ServiceMessageTest {
     }
     @BeforeMethod
     @Parameters("browser")
-    public void BeforeMethod(String browser) throws InterruptedException {
+    public void beforeMethod(String browser) throws InterruptedException {
         loginUtil= new LoginUtil(browser);
         driver= loginUtil.getDriver();
-        CreateServiceMessage();
+        createServiceMessage();
         Thread.sleep(3000);
     }
     @Test
-    public void VerifyServiceMessage() {
+    public void verifyServiceMessage() {
 
         String expectedTarget = "To me UL";
         String actualTarget = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]")).getText();

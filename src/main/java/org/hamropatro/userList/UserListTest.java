@@ -19,7 +19,7 @@ public class UserListTest {
         }
         @Test(alwaysRun = true)
         @Parameters("browser")
-        public void CreateUserList(String browser) throws InterruptedException {
+        public void createUserList(String browser) throws InterruptedException {
             loginUtil= new LoginUtil(browser);
             loginUtil.Login();
             parentHandle();

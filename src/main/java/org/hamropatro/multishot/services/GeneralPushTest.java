@@ -24,7 +24,7 @@ public class GeneralPushTest {
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
-    public void CreateGeneralPush() throws InterruptedException{
+    public void createGeneralPush() throws InterruptedException{
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
         parentHandle();
@@ -95,14 +95,14 @@ public class GeneralPushTest {
     }
     @BeforeMethod
     @Parameters("browser")
-    public void BeforeMeethod(String browser) throws InterruptedException {
+    public void beforeMeethod(String browser) throws InterruptedException {
         loginUtil= new LoginUtil(browser);
         driver= loginUtil.getDriver();
-        CreateGeneralPush();
+        createGeneralPush();
         Thread.sleep(5000);
     }
     @Test
-    public void VerifyPush(){
+    public void verifyPush(){
 
         String expectedTarget="To me UL";
         String actualTarget= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]")).getText();

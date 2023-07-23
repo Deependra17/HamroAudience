@@ -24,7 +24,7 @@ public class CmpShortServiceMessageTest {
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
-    public void CreateShortServiceMessage() throws InterruptedException {
+    public void createShortServiceMessage() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
         parentHandle();
@@ -75,11 +75,11 @@ public class CmpShortServiceMessageTest {
         public void BeforeMethod(String browser) throws InterruptedException {
             loginUtil= new LoginUtil(browser);
             driver = loginUtil.getDriver();
-            CreateShortServiceMessage();
+            createShortServiceMessage();
             Thread.sleep(4000);
         }
         @Test
-        public void VerifySms(){
+        public void verifySms(){
 
             String expectedTarget = "To me UL";
             String actualTarget = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]/div/a")).getText();

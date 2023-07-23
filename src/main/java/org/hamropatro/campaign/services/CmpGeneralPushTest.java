@@ -21,7 +21,7 @@ public class CmpGeneralPushTest {
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
-    public void CreateGeneralPush() throws InterruptedException {
+    public void createGeneralPush() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
 
@@ -31,10 +31,9 @@ public class CmpGeneralPushTest {
         Thread.sleep(5000);
         System.out.println("Campaign button is clicked");
 
-        var Ktm = "Ktm";
         WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
         WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("segment")));
-        dropdown.sendKeys(Ktm);
+        dropdown.sendKeys("This is a Automated Segment");
         dropdown.sendKeys(Keys.ENTER);
         System.out.println("Option 'ktm' is selected");
         Thread.sleep(3000);
@@ -81,8 +80,8 @@ public class CmpGeneralPushTest {
         Thread.sleep(4000);
     }
     @Test
-    public void VerifyGeneralPush(){
-        String expectedTarget = "Ktm SE";
+    public void verifyGeneralPush(){
+        String expectedTarget = "This is a Automated Segment SE";
         String actualTarget = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]")).getText();
         System.out.println("Actual target :"+actualTarget);
         Assert.assertEquals(actualTarget,expectedTarget, "Campaign  target does not match");

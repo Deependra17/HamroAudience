@@ -25,7 +25,7 @@ public class ServiceMessageTest {
         public void parentHandle() {
             driver.switchTo().window(loginUtil.getParentHandle());
         }
-        public void CreateServiceMessage() throws InterruptedException {
+        public void createServiceMessage() throws InterruptedException {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
             loginUtil.Login();
             parentHandle();
@@ -121,14 +121,14 @@ public class ServiceMessageTest {
         }
         @BeforeMethod
         @Parameters("browser")
-        public void BeforeMethod(String browser) throws InterruptedException {
+        public void beforeMethod(String browser) throws InterruptedException {
             loginUtil= new LoginUtil(browser);
             driver= loginUtil.getDriver();
-            CreateServiceMessage();
+            createServiceMessage();
             Thread.sleep(3000);
         }
         @Test
-        public void VerifySm(){
+        public void verifySm(){
 
             String expectedTarget="to deepen UT";
             String actualTarget= driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]")).getText();
@@ -156,7 +156,7 @@ public class ServiceMessageTest {
             System.out.println("Actual End date: "+actualExpectedDate);
         }
         @AfterMethod
-        public  void TearDown(ITestResult result){
+        public  void tearDown(ITestResult result){
             src.takeScreenshotOnFailure(driver,result);
             driver.quit();
         }
