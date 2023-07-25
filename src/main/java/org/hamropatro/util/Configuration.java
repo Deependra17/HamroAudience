@@ -16,9 +16,17 @@ public class Configuration {
     public String getPassword() {
         return password;
     }
+    public String getInvalidEmail(){
+        return InvalidEmail;
+    }
+    public String getInvalidPassword(){
+        return InvalidPassword;
+    }
     private String url;
     private String email;
     private String password;
+    private String InvalidEmail;
+    private String InvalidPassword;
 
     Configuration() {
 
@@ -32,6 +40,8 @@ public class Configuration {
             this.url = prop.getProperty("url");
             this.email = prop.getProperty("email");
             this.password = prop.getProperty("password");
+            this.InvalidEmail=prop.getProperty("InvalidEmail");
+            this.InvalidPassword=prop.getProperty("InvalidPassword");
         } catch (
                 IOException ex) {
             ex.printStackTrace();

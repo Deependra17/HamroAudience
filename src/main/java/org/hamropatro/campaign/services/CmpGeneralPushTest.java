@@ -21,7 +21,7 @@ public class CmpGeneralPushTest {
     public void parentHandle() {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
-    public void createGeneralPush() throws InterruptedException {
+     public void createGeneralPush() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
 
@@ -73,10 +73,10 @@ public class CmpGeneralPushTest {
     }
     @BeforeMethod
     @Parameters("browser")
-    private void BeforeMethod(String browser) throws InterruptedException {
+    private void beforeMethod(String browser) throws InterruptedException {
         loginUtil= new LoginUtil(browser);
         driver = loginUtil.getDriver();
-        CreateGeneralPush();
+        createGeneralPush();
         Thread.sleep(4000);
     }
     @Test

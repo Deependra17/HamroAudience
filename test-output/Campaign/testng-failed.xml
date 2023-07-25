@@ -5,16 +5,16 @@
     <listener class-name="org.testng.reporters.EmailableReporter"/>
     <listener class-name="org.testng.reporters.FailedReporter"/>
   </listeners>
-  <test thread-count="5" parallel="tests" name="LoginTest - Firefox(failed)" verbose="2">
-    <parameter name="browser" value="Firefox"/>
+  <test thread-count="5" parallel="tests" name="LoginTest using chrome(failed)" verbose="2">
+    <parameter name="browser" value="Chrome"/>
     <classes>
-      <class name="org.hamropatro.login.LoginTest">
+      <class name="org.hamropatro.login.InvalidLoginTest">
         <methods>
-          <include name="BeforeMethod"/>
+          <include name="beforeMethod"/>
+          <include name="invalidTestLogin"/>
           <include name="tearDown"/>
-          <include name="TestLogin"/>
         </methods>
-      </class> <!-- org.hamropatro.login.LoginTest -->
+      </class> <!-- org.hamropatro.login.InvalidLoginTest -->
     </classes>
-  </test> <!-- LoginTest - Firefox(failed) -->
+  </test> <!-- LoginTest using chrome(failed) -->
 </suite> <!-- Failed suite [Campaign] -->
