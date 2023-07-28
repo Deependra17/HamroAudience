@@ -37,6 +37,6 @@ public class InvalidPasswordTest {
     @AfterMethod
     public void tearDown(ITestResult result) {
         src.takeScreenshotOnFailure(driver, result);
-      //  driver.quit();
+        driver.quit();
     }
 }

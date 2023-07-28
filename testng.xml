@@ -142,7 +142,7 @@
         <!--    Test for firefox-->
         <!--    Login Test-->
 
-<test name="LoginTest - Firefox" enabled="true" >
+<test name="LoginTest - Firefox" enabled="false" >
 <parameter name="browser" value="Firefox"></parameter>
 <classes>
     <class name="org.hamropatro.login.LoginTest">
