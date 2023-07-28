@@ -31,7 +31,7 @@ public class LoginUtil {
     }
     public void Login() throws InterruptedException {
         Configuration config = new Configuration();
-        Repository repo= new Repository();
+        Repository locate= new Repository();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.get(config.getUrl());
         System.out.println("URL is Entered");
@@ -39,7 +39,7 @@ public class LoginUtil {
         this.parentHandle = driver.getWindowHandle();
         System.out.println("Parent window - " + parentHandle);
 
-        driver.findElement(By.xpath(repo.getContinueWithGoogle())).click();
+        driver.findElement(By.xpath(locate.getContinueWithGoogle())).click();
         System.out.println("Continue with google is clicked");
 
         try {
@@ -61,17 +61,17 @@ public class LoginUtil {
             }
         }
 
-        WebElement email= driver.findElement(By.xpath(repo.getEnterEmail()));
+        WebElement email= driver.findElement(By.xpath(locate.getEnterEmail()));
         email.sendKeys(config.getEmail());
-        driver.findElement(By.xpath(repo.getClickEmailButton())).click();
+        driver.findElement(By.xpath(locate.getClickEmailButton())).click();
         Thread.sleep(3000);
         System.out.println("Email is Entered Successfully");
 
-        WebElement password= driver.findElement(By.xpath(repo.getEnterPassword()));
+        WebElement password= driver.findElement(By.xpath(locate.getEnterPassword()));
         password.sendKeys(config.getPassword());
         System.out.println("password is Entered successfully");
 
-        driver.findElement(By.xpath(repo.getClickButton())).click();
+        driver.findElement(By.xpath(locate.getClickButton())).click();
         System.out.println("User logged in successfully");
     }
     public void loginWithInvalidEmail() throws InterruptedException {
