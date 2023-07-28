@@ -17,13 +17,24 @@
             </class>
         </classes>
     </test>
-<!--    Invalid input login test-->
-    <test name="LoginTest using chrome" enabled="false">
+<!--    Invalid Email test-->
+    <test name="Invalid email test using chrome" enabled="false">
         <parameter name="browser" value="Chrome"></parameter>
         <classes>
-            <class name="org.hamropatro.login.InvalidLoginTest">
+            <class name="org.hamropatro.login.InvalidEmailTest">
                 <methods>
-                    <include name="invalidTestLogin"/>
+                    <include name="loginTestWithInvalidEmail"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+<!--    invlaid password Test-->
+    <test name="invalid password using chrome" enabled="false">
+        <parameter name="browser" value="Chrome"></parameter>
+        <classes>
+            <class name="org.hamropatro.login.InvalidPasswordTest">
+                <methods>
+                    <include name="loginTestWithInvalidPassword"/>
                 </methods>
             </class>
         </classes>
@@ -131,7 +142,7 @@
         <!--    Test for firefox-->
         <!--    Login Test-->
 
-<test name="LoginTest - Firefox" enabled="false" >
+<test name="LoginTest - Firefox" enabled="true" >
 <parameter name="browser" value="Firefox"></parameter>
 <classes>
     <class name="org.hamropatro.login.LoginTest">

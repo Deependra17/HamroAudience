@@ -10,7 +10,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 @Listeners(CustomListener.class)
-public class InvalidLoginTest {
+public class InvalidEmailTest {
     private WebDriver driver;
     LoginUtil loginUtil;
     ScreenShots src= new ScreenShots();
@@ -25,7 +25,7 @@ public class InvalidLoginTest {
     }
 
     @Test()
-    public void invalidTestLogin() throws InterruptedException {
+    public void loginTestWithInvalidEmail() throws InterruptedException {
         loginUtil.loginWithInvalidEmail();
         parentHandle();
         String expectedMessage = "Couldn't find your Google Account";
@@ -36,6 +36,6 @@ public class InvalidLoginTest {
     @AfterMethod
     public void tearDown(ITestResult result) {
         src.takeScreenshotOnFailure(driver, result);
-          driver.quit();
+        //  driver.quit();
     }
 }
