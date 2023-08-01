@@ -51,7 +51,7 @@
 </classes>
 </test>
         <!--    Campaign GP-->
-<test name="General Push test using chrome" enabled="true">
+<test name="General Push test using chrome" enabled="false">
 <parameter name="browser" value="Chrome"></parameter>
 <classes>
     <class name="org.hamropatro.campaign.services.CmpGeneralPushTest">
@@ -62,7 +62,7 @@
 </classes>
 </test>
         <!--    Campaign SM-->
-<test name="Service message test using chrome" enabled="false">
+<test name="Service message test using chrome" enabled="true">
 <parameter name="browser" value="Chrome"></parameter>
 <classes>
     <class name="org.hamropatro.campaign.services.ServiceMessageTest">

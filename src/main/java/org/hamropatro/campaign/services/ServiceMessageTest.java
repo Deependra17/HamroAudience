@@ -38,7 +38,7 @@ public class ServiceMessageTest {
         WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(15));
         driver.findElement(By.xpath(locator.getSelectTarget()));
         System.out.println("User list is selected");
-        Thread.sleep(3000);
+        Thread.sleep(5000);
 
         WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator.getSelectAudience())));
         dropdown.sendKeys("To me");
