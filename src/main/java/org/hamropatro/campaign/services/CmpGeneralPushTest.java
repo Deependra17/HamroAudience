@@ -1,11 +1,8 @@
 package org.hamropatro.campaign.services;
 
-import org.hamropatro.util.CustomListener;
-import org.hamropatro.util.LoginUtil;
-import org.hamropatro.util.Repository;
-import org.hamropatro.util.ScreenShots;
+import org.hamropatro.repository.GeneralPush;
+import org.hamropatro.util.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -23,7 +20,7 @@ public class CmpGeneralPushTest {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
      public void createGeneralPush() throws InterruptedException {
-         Repository locate= new Repository();
+         GeneralPush locate= new GeneralPush();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
 
@@ -83,7 +80,7 @@ public class CmpGeneralPushTest {
     }
     @Test
     public void verifyGeneralPush(){
-        Repository locate= new Repository();
+        GeneralPush locate= new GeneralPush();
         String expectedTarget = "This is a Automated Segment SE";
         String actualTarget = driver.findElement(By.xpath(locate.getTargetName())).getText();
         System.out.println("Actual target :"+actualTarget);

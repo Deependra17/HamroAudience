@@ -1,5 +1,6 @@
 package org.hamropatro.campaign.services;
 
+import org.hamropatro.repository.Email;
 import org.hamropatro.util.CustomListener;
 import org.hamropatro.util.LoginUtil;
 import org.hamropatro.util.ScreenShots;
@@ -25,48 +26,49 @@ public class CmpEmailTest {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
     public void createEmail() throws InterruptedException {
+        Email locate= new Email();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
         parentHandle();
 
-        WebElement myElement = driver.findElement(By.id("theme-btn"));
+        WebElement myElement = driver.findElement(By.id(locate.getCreateButton()));
         myElement.click();
         System.out.println("Campaign button is clicked");
 
-        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div[1]/div[1]/div/div[4]")).click();
+        driver.findElement(By.xpath(locate.getClickOnEmail())).click();
         System.out.println("Email is selected");
         Thread.sleep(4000);
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[2]/div[1]/div/div/div/div/div/div/label[2]")));
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locate.getChooseUserList())));
         element.click();
         System.out.println("User list is selected");
 
-        WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[2]/div[1]/div/div/div/div/div/div/div[2]/div/div/div/div/div/div/div/span[1]/input")));
+        WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locate.getChooseAudience())));
         dropdown.sendKeys("To me");
         dropdown.sendKeys(Keys.ENTER);
         System.out.println("Option 'To me' is selected");
         Thread.sleep(3000);
 
-        driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[2]/div[2]/div/div[2]/div[1]/div/div/div/div/div/label/span[1]/input")).click();
+        driver.findElement(By.xpath(locate.getCLickOnSchedule())).click();
         System.out.println("Schedule button is clicked");
 
-        driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[2]/div[3]/div/div/div[2]/div/div/input")).sendKeys("Automated Email");
+        driver.findElement(By.xpath(locate.getEnterSubject())).sendKeys("Automated Email");
         System.out.println("Subject is entered");
 
-        driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[3]/div/div[2]/button[3]")).click();
+        driver.findElement(By.xpath(locate.getClickOnLoadTemplate())).click();
         System.out.println("Load template button is clicked");
         Thread.sleep(3000);
 
-        driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div/div[2]/div[2]/div/div[2]/div[1]/div[3]/button")).click();
+        driver.findElement(By.xpath(locate.getLoadTemplate())).click();
         System.out.println("Template is loaded");
         Thread.sleep(3000);
 
-        driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[4]/div/form/div[4]/div/div/div/div[1]/button")).click();
+        driver.findElement(By.xpath(locate.getClickOnCreateEmailCampaignButton())).click();
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        WebElement popoverElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[4]/div/div/div/div[2]/div")));
-        WebElement confirmButton = popoverElement.findElement(By.xpath("/html/body/div[4]/div/div/div/div[2]/div/div[2]/button[2]"));
+        WebElement popoverElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locate.getConfirmBox())));
+        WebElement confirmButton = popoverElement.findElement(By.xpath(locate.getClickYes()));
         confirmButton.click();
         System.out.println("Confirmed Yes");
         System.out.println("Template email is created successfully");
@@ -81,26 +83,27 @@ public class CmpEmailTest {
     }
     @Test
     public void verifyCmpEmail(){
+        Email locate= new Email();
 
         String expectedTarget = "To me UL";
-        String actualTarget = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]/div/a")).getText();
+        String actualTarget = driver.findElement(By.xpath(locate.getCompareTargetAudience())).getText();
         System.out.println("Actual Target :"+actualTarget);
         Assert.assertEquals(actualTarget,expectedTarget, "Campaign  target does not match");
 
         String expectedTitle = "Automated Email";
-        WebElement element = driver.findElement(By.xpath( "/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[2]/div/div/div"));
+        WebElement element = driver.findElement(By.xpath( locate.getCompareCampaignTitle()));
         String actualTitle = element.getText();
         System.out.println("Actual Title :"+actualTitle);
         Assert.assertEquals(actualTitle, expectedTitle, "Campaign title does not match");
 
         String expectedType = "EMAIL";
-        WebElement element1= driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[3]"));
+        WebElement element1= driver.findElement(By.xpath(locate.getCompareEmailCampaignType()));
         String actualType =element1.getText();
         Assert.assertEquals(actualType,expectedType, "Campaign type does not Match");
         System.out.println("Actual Type :"+actualType);
 
         String expectedAuthor = "dbohara@hamropatro.com";
-        String actualAuthor = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[10]")).getText();
+        String actualAuthor = driver.findElement(By.xpath(locate.getCompareCampaignAuthor())).getText();
         Assert.assertEquals(actualAuthor,expectedAuthor, "Author name does not match");
         System.out.println("Actual Author :"+actualAuthor);
     }

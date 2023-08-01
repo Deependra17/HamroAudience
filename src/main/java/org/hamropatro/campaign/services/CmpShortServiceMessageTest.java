@@ -1,13 +1,12 @@
 package org.hamropatro.campaign.services;
 
 import org.hamropatro.util.LoginUtil;
-import org.hamropatro.util.Repository;
 import org.hamropatro.util.ScreenShots;
+import org.hamropatro.repository.ShortMessage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -26,7 +25,7 @@ public class CmpShortServiceMessageTest {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
     public void createShortServiceMessage() throws InterruptedException {
-        Repository locate= new Repository();
+        ShortMessage locate= new ShortMessage();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
         parentHandle();
@@ -82,7 +81,8 @@ public class CmpShortServiceMessageTest {
         }
         @Test
         public void verifySms(){
-             Repository verify= new Repository();
+            ShortMessage verify= new ShortMessage();
+
             String expectedTarget = "To me UL";
             String actualTarget = driver.findElement(By.xpath(verify.getCompareTarget())).getText();
             System.out.println("Actual target :"+actualTarget);

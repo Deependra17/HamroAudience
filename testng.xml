@@ -62,7 +62,7 @@
 </classes>
 </test>
         <!--    Campaign SM-->
-<test name="Service message test using chrome" enabled="true">
+<test name="Service message test using chrome" enabled="false">
 <parameter name="browser" value="Chrome"></parameter>
 <classes>
     <class name="org.hamropatro.campaign.services.ServiceMessageTest">
@@ -84,7 +84,7 @@
 </classes>
 </test>
         <!--    Campaign Email-->
-<test name="Email test using chrome" enabled="false">
+<test name="Email test using chrome" enabled="true">
 <parameter name="browser" value="Chrome"></parameter>
 <classes>
     <class name="org.hamropatro.campaign.services.CmpEmailTest">

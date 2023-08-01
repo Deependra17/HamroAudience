@@ -1,11 +1,8 @@
 package org.hamropatro.campaign.services;
 
-import org.hamropatro.util.CustomListener;
-import org.hamropatro.util.LoginUtil;
-import org.hamropatro.util.Repository;
-import org.hamropatro.util.ScreenShots;
+import org.hamropatro.repository.ServiceMessage;
+import org.hamropatro.util.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -23,7 +20,7 @@ public class ServiceMessageTest {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
     public void createServiceMessage() throws InterruptedException {
-        Repository locator= new Repository();
+        ServiceMessage locator= new ServiceMessage();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
         parentHandle();
@@ -36,7 +33,7 @@ public class ServiceMessageTest {
         Thread.sleep(5000);
 
         WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(15));
-        driver.findElement(By.xpath(locator.getSelectTarget()));
+        driver.findElement(By.xpath(locator.getSelectTarget())).click();
         System.out.println("User list is selected");
         Thread.sleep(5000);
 
@@ -90,7 +87,7 @@ public class ServiceMessageTest {
     }
     @Test
     public void verifyServiceMessage() {
-        Repository locator= new Repository();
+        ServiceMessage locator= new ServiceMessage();
         String expectedTarget = "To me UL";
         String actualTarget = driver.findElement(By.xpath(locator.getConfirmTarget())).getText();
         System.out.println("Actual target :"+actualTarget);

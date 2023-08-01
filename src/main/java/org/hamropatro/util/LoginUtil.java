@@ -1,5 +1,6 @@
 package org.hamropatro.util;
 
+import org.hamropatro.repository.Login;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,7 +32,7 @@ public class LoginUtil {
     }
     public void Login() throws InterruptedException {
         Configuration config = new Configuration();
-        Repository locate= new Repository();
+        Login locate= new Login();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.get(config.getUrl());
         System.out.println("URL is Entered");
@@ -77,7 +78,7 @@ public class LoginUtil {
     public void loginWithInvalidEmail() throws InterruptedException {
 
         Configuration config2 = new Configuration();
-        Repository repo2= new Repository();
+        Login repo2= new Login();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.get(config2.getUrl());
         System.out.println("URL is Entered");
@@ -116,7 +117,7 @@ public class LoginUtil {
     public  void loginWithInvalidPassword() throws InterruptedException {
 
         Configuration config3 = new Configuration();
-        Repository repo3= new Repository();
+        Login repo3= new Login();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.get(config3.getUrl());
         System.out.println("URL is Entered");
