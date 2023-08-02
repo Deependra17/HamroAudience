@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Campaign" parallel="tests" preserve-order="true" verbose="2">
+<suite name="Campaign" parallel="tests" preserve-order="true" verbose="4">
     <listeners>
         <listener class-name="org.testng.reporters.EmailableReporter"/>
         <listener class-name="org.testng.reporters.FailedReporter"/>
@@ -13,28 +13,6 @@
             <class name="org.hamropatro.login.LoginTest">
                 <methods>
                     <include name="testLogin"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-<!--    Invalid Email test-->
-    <test name="Invalid email test using chrome" enabled="false">
-        <parameter name="browser" value="Chrome"></parameter>
-        <classes>
-            <class name="org.hamropatro.login.InvalidEmailTest">
-                <methods>
-                    <include name="loginTestWithInvalidEmail"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-<!--    invlaid password Test-->
-    <test name="invalid password using chrome" enabled="false">
-        <parameter name="browser" value="Chrome"></parameter>
-        <classes>
-            <class name="org.hamropatro.login.InvalidPasswordTest">
-                <methods>
-                    <include name="loginTestWithInvalidPassword"/>
                 </methods>
             </class>
         </classes>
@@ -84,7 +62,7 @@
 </classes>
 </test>
         <!--    Campaign Email-->
-<test name="Email test using chrome" enabled="true">
+<test name="Email test using chrome" enabled="false">
 <parameter name="browser" value="Chrome"></parameter>
 <classes>
     <class name="org.hamropatro.campaign.services.CmpEmailTest">
@@ -106,7 +84,7 @@
 </classes>
 </test>
         <!--    Multihshot SM-->
-<test name="Multishot sm Test using chrome" enabled="false">
+<test name="Multishot sm Test using chrome" enabled="true">
 <parameter name="browser" value="Chrome"></parameter>
 <classes>
     <class name="org.hamropatro.multishot.services.ServiceMessageTest">

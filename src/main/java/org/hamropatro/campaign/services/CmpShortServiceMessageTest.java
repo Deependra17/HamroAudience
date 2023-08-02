@@ -2,7 +2,7 @@ package org.hamropatro.campaign.services;
 
 import org.hamropatro.util.LoginUtil;
 import org.hamropatro.util.ScreenShots;
-import org.hamropatro.repository.ShortMessage;
+import org.hamropatro.campaignLocators.ShortMessage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;

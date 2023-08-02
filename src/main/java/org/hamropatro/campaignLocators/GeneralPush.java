@@ -1,4 +1,4 @@
-package org.hamropatro.repository;
+package org.hamropatro.campaignLocators;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -64,7 +64,6 @@ public class GeneralPush {
     public String getAuthor() {
         return Author;
     }
-
     private String ClickOnCreateCampaign;
     private String ChooseTarget;
     private String ClickOnSchedule;
@@ -82,10 +81,11 @@ public class GeneralPush {
     private String Author;
 
 
+
    public GeneralPush() {
 
        try (
-               InputStream input = new FileInputStream("src/main/resources/locator.properties")) {
+               InputStream input = new FileInputStream("src/main/resources/campaign.properties")) {
 
            java.util.Properties locate = new java.util.Properties();
 

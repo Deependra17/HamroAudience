@@ -1,4 +1,4 @@
-package org.hamropatro.repository;
+package org.hamropatro.campaignLocators;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -94,7 +94,7 @@ public class ServiceMessage {
     public ServiceMessage(){
     try(
 
-        InputStream input = new FileInputStream("src/main/resources/locator.properties")) {
+        InputStream input = new FileInputStream("src/main/resources/campaign.properties")) {
 
             java.util.Properties locate = new java.util.Properties();
 

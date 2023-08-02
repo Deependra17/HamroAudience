@@ -1,5 +1,6 @@
 package org.hamropatro.multishot.services;
 
+import org.hamropatro.multishotLocators.GeneralPush;
 import org.hamropatro.util.LoginUtil;
 import org.hamropatro.util.ScreenShots;
 import org.openqa.selenium.By;
@@ -25,69 +26,70 @@ public class GeneralPushTest {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
     public void createGeneralPush() throws InterruptedException{
+        GeneralPush locate=new GeneralPush();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
         parentHandle();
 
-        WebElement multishot=driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div[1]/div[1]/div/div[2]"));
+        WebElement multishot=driver.findElement(By.xpath(locate.getClickOnMultishot()));
         multishot.click();
         System.out.println("Multishot button is clicked");
 
-        WebElement myElement = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[2]/div/div[1]/div[1]/div/div/a/button"));
+        WebElement myElement = driver.findElement(By.xpath(locate.getClickOnCreateMultishot()));
         myElement.click();
         Thread.sleep(4000);
 
-        WebElement radioButton= driver.findElement(By.xpath("//*[@id=\"targetMode\"]/label[2]/span[1]/input"));
+        WebElement radioButton= driver.findElement(By.xpath(locate.getClickOnTarget()));
         radioButton.click();
         System.out.println("User list is selected");
         Thread.sleep(3000);
 
         WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
-        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div[1]/form/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div/div/div/span[1]/input")));
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locate.getSelectUserAudience())));
         dropdown.sendKeys("To me");
         dropdown.sendKeys(Keys.ENTER);
         System.out.println("Option 'TO deepen' is selected");
         Thread.sleep(3000);
 
-        WebElement Dry= dropdown.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div[1]/form/div/div[3]/div/div[1]/div[2]/div/div/div/div/div/label/span[1]/input"));
+        WebElement Dry= dropdown.findElement(By.xpath(locate.getDryRun()));
         Dry.click();
         System.out.println("Dry run is active");
 
-        WebElement CmpTitle= dropdown.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div[1]/form/div/div[3]/div/div[2]/div/div[1]/div/div/div/div[2]/div/div/input"));
+        WebElement CmpTitle= dropdown.findElement(By.xpath(locate.getMultishotCampaignTitle()));
         CmpTitle.sendKeys("Automated General Push");
         System.out.println("Campaign title is entered");
 
-        WebElement localTime= driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div[1]/form/div/div[3]/div/div[2]/div/div[4]/div[2]/div/div/div[2]/div/div/label/span/input"));
+        WebElement localTime= driver.findElement(By.xpath(locate.getSelectLocalTime()));
         localTime.click();
         System.out.println("Local time is selected");
 
-        WebElement gap= dropdown.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div[1]/form/div/div[3]/div/div[2]/div/div[5]/div[1]/div/div/div[2]/div/div/input"));
+        WebElement gap= dropdown.findElement(By.xpath(locate.getDayGap()));
         gap.sendKeys("1");
         System.out.println("Day gap is 1 day");
         Thread.sleep(3000);
 
-        driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/div/div[2]/div[1]/form/div/div[4]/div/div[2]"));
+        driver.findElement(By.xpath(locate.getExpireDate()));
 
-        WebElement Title= driver.findElement(By.xpath("//*[@id=\"title\"]"));
+        WebElement Title= driver.findElement(By.xpath(locate.getEnterNewsTitle()));
         Title.sendKeys("This is a title");
         System.out.println("Title is Entered");
 
-        WebElement description= driver.findElement(By.xpath("//*[@id=\"detailMessage\"]"));
+        WebElement description= driver.findElement(By.xpath(locate.getEnterNewsDescription()));
         description.sendKeys("This is a automated general push from hamro patro");
         System.out.println("Description is entered");
 
-        WebElement deepLink= driver.findElement(By.xpath("//*[@id=\"deeplink\"]"));
+        WebElement deepLink= driver.findElement(By.xpath(locate.getEnterDeeplink()));
         deepLink.sendKeys("https://www.hamropatro.com/");
         System.out.println("Deeplink is entered");
 
-        WebElement ConfirmButton=driver.findElement(By.xpath("//*[@id=\"theme-btn\"]"));
+        WebElement ConfirmButton=driver.findElement(By.xpath(locate.getCreateCampaign()));
         ConfirmButton.click();
         System.out.println("Create Campaign button is clicked");
         Thread.sleep(3000);
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement popoverElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role=\"tooltip\"]")));
-        WebElement confirmButton = popoverElement.findElement(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[2]"));
+        WebElement popoverElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locate.getConfirmationBox())));
+        WebElement confirmButton = popoverElement.findElement(By.xpath(locate.getClickYesToCreate()));
         confirmButton.click();
         System.out.println("Confirmed Yes");
         System.out.println("Service message is created successfully");
@@ -103,29 +105,29 @@ public class GeneralPushTest {
     }
     @Test
     public void verifyPush(){
-
+        GeneralPush locate=new GeneralPush();
         String expectedTarget="To me UL";
-        String actualTarget= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]")).getText();
+        String actualTarget= driver.findElement(By.xpath(locate.getVerifyTarget())).getText();
         Assert.assertEquals(actualTarget,expectedTarget,"Target doesnot match");
         System.out.println("Actual target: "+actualTarget);
 
         String expectedName="Automated General Push";
-        String actualName=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[2]")).getText();
+        String actualName=driver.findElement(By.xpath(locate.getVerifyCampaignName())).getText();
         Assert.assertEquals(actualName,expectedName,"Campaign name does not match");
         System.out.println("Actula Name: "+actualName);
 
         String expectedCmpTitle="DRYThis is a title";
-        String actualCmpTitle=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[3]/div/div/div")).getText();
+        String actualCmpTitle=driver.findElement(By.xpath(locate.getVerifyTitle())).getText();
         Assert.assertEquals(actualCmpTitle,expectedCmpTitle,"Campaign Title does not macth");
         System.out.println("Actual campaign Title: "+actualCmpTitle);
 
         String expectedType="GP";
-        String actualType= driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[4]")).getText();
+        String actualType= driver.findElement(By.xpath(locate.getVerifyType())).getText();
         Assert.assertEquals(actualType,expectedType,"Type does not match");
         System.out.println("Actual type: "+actualType);
 
         String expecctedExpireDate="Never";
-        String actualExpectedDate=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[8]")).getText();
+        String actualExpectedDate=driver.findElement(By.xpath(locate.getVerifyExpireDate())).getText();
         Assert.assertEquals(actualExpectedDate,expecctedExpireDate,"Expired date does not match");
         System.out.println("Actual End date: "+actualExpectedDate);
     }

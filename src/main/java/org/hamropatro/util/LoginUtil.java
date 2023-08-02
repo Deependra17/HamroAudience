@@ -1,6 +1,6 @@
 package org.hamropatro.util;
 
-import org.hamropatro.repository.Login;
+import org.hamropatro.campaignLocators.Login;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -1,6 +1,6 @@
 package org.hamropatro.campaign.services;
 
-import org.hamropatro.repository.GeneralPush;
+import org.hamropatro.campaignLocators.GeneralPush;
 import org.hamropatro.util.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;

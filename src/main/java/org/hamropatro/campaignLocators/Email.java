@@ -1,4 +1,4 @@
-package org.hamropatro.repository;
+package org.hamropatro.campaignLocators;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -85,7 +85,7 @@ public class Email {
     public  Email(){
 
         try (
-                InputStream input = new FileInputStream("src/main/resources/locator.properties")) {
+                InputStream input = new FileInputStream("src/main/resources/campaign.properties")) {
 
             java.util.Properties locate = new java.util.Properties();
 
@@ -105,7 +105,6 @@ public class Email {
             this.CompareCampaignTitle = locate.getProperty("CompareCampaignTitle");
             this.CompareEmailCampaignType = locate.getProperty("CompareEmailCampaignType");
             this.CompareCampaignAuthor = locate.getProperty("CompareCampaignAuthor");
-
 
         } catch (
                 IOException ex) {
