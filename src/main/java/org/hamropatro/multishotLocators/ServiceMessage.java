@@ -172,7 +172,6 @@ public class ServiceMessage {
             this.CompareMultishotType=locate.getProperty("CompareMultishotType");
             this.CompareExpireDate=locate.getProperty("CompareExpireDate");
 
-
         } catch (
                 IOException ex) {
             ex.printStackTrace();

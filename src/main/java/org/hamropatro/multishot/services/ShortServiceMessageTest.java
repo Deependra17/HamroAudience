@@ -1,5 +1,6 @@
 package org.hamropatro.multishot.services;
 
+import org.hamropatro.multishotLocators.ShortMessage;
 import org.hamropatro.util.LoginUtil;
 import org.hamropatro.util.ScreenShots;
 import org.openqa.selenium.By;
@@ -28,58 +29,59 @@ public class ShortServiceMessageTest {
         driver.switchTo().window(loginUtil.getParentHandle());
     }
     public void createShortServiceMessage() throws InterruptedException {
+        ShortMessage locator=new ShortMessage();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         loginUtil.Login();
         parentHandle();
 
-        WebElement multishot = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div"));
+        WebElement multishot = driver.findElement(By.xpath(locator.getClickOnMultishotButton()));
         multishot.click();
         System.out.println("Multishot button is clicked");
         Thread.sleep(3000);
 
-        WebElement myElement = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[2]/div/div[1]/div[1]/div/div/a/button"));
+        WebElement myElement = driver.findElement(By.xpath(locator.getCLickToCampaignButton()));
         myElement.click();
 
-        WebElement sms=driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[1]/div[1]/div/div[3]/div"));
+        WebElement sms=driver.findElement(By.xpath(locator.getCLickOnSMS()));
         sms.click();
         System.out.println("Sms is choosed");
         Thread.sleep(3000);
 
-        WebElement Target= driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[3]/div/div[2]/div[1]/form/div/div[2]/div/div/div/div/div/div/label[1]/span[1]/input"));
+        WebElement Target= driver.findElement(By.xpath(locator.getSelectTargetForSMS()));
         Target.click();
         System.out.println("target is selected");
 
         WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
-        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[3]/div/div[2]/div[1]/form/div/div[2]/div/div/div/div/div/div/div[1]/div/div/div/div/div/div/div/span[1]/input")));
+        WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator.getSelectUserAudienceForSMS())));
         dropdown.sendKeys("To me");
         dropdown.sendKeys(Keys.ENTER);
         System.out.println("Option 'TO deepen' is selected");
         Thread.sleep(3000);
 
-        WebElement dry= driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[3]/div/div[2]/div[1]/form/div/div[4]/div/div[1]/div[2]/div/div/div/div/div/label/span[1]/input"));
+        WebElement dry= driver.findElement(By.xpath(locator.getClickOnDRYRun()));
         dry.click();
         System.out.println("Dru run is clicked");
 
-        WebElement cmpTitle= driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[3]/div/div[2]/div[1]/form/div/div[4]/div/div[2]/div/div[1]/div/div/div/div[2]/div/div/input"));
+        WebElement cmpTitle= driver.findElement(By.xpath(locator.getEnterSMSCampaignTitle()));
         cmpTitle.sendKeys("This is a Automated SMS");
         System.out.println("Campaign title is entered");
 
-        WebElement gap=driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[3]/div/div[2]/div[1]/form/div/div[4]/div/div[2]/div/div[5]/div[1]/div/div/div[2]/div/div/input"));
+        WebElement gap=driver.findElement(By.xpath(locator.getEnterDayGap()));
         gap.sendKeys("1");
         System.out.println("Daygap is entered");
 
-        WebElement Text= driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[3]/div/div[2]/div[1]/form/div/div[6]/div/div/div[2]/div/div/textarea"));
+        WebElement Text= driver.findElement(By.xpath(locator.getEnterSMSText()));
         Text.sendKeys("Hello Deepen!");
         System.out.println("Text is entered");
 
-        WebElement ConfirmButton=driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[3]/div/div[2]/div[1]/form/div/div[7]/div/div/div/div/div/div/div/div[1]/button"));
+        WebElement ConfirmButton=driver.findElement(By.xpath(locator.getClickOnCreateSMsCampaignButton()));
         ConfirmButton.click();
         System.out.println("Create Campaign button is clicked");
         Thread.sleep(3000);
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement popoverElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role=\"tooltip\"]")));
-        WebElement confirmButton = popoverElement.findElement(By.xpath("/html/body/div[3]/div/div/div/div[2]/div/div[2]/button[2]"));
+        WebElement popoverElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator.getToConfirmationBox())));
+        WebElement confirmButton = popoverElement.findElement(By.xpath(locator.getYesToCreateSMSCampaign()));
         confirmButton.click();
         System.out.println("Confirmed Yes");
         System.out.println("Service message is created successfully");
@@ -96,29 +98,30 @@ public class ShortServiceMessageTest {
     }
     @Test
     private void verifySms() throws InterruptedException {
+        ShortMessage locator=new ShortMessage();
 
         String expectedTarget="To me UL";
-        String actualTarget=driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]")).getText();
+        String actualTarget=driver.findElement(By.xpath(locator.getCampaignTarget())).getText();
         Assert.assertEquals(actualTarget,expectedTarget,"Target does not match");
         System.out.println("Actual target: "+actualTarget);
 
         String expectedCmpName="This is a Automated SMS";
-        String actualCmpName=driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[2]")).getText();
+        String actualCmpName=driver.findElement(By.xpath(locator.getCampaignName())).getText();
         Assert.assertEquals(actualCmpName,expectedCmpName,"Campaign Name doesnot match");
         System.out.println("Actual Campaign Name: "+actualCmpName);
 
         String expectedCmpTitle="DRYHello Deepen!";
-        String actualCmpTitle=driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[3]/div/div/div")).getText();
+        String actualCmpTitle=driver.findElement(By.xpath(locator.getCampaignTitle())).getText();
         Assert.assertEquals(actualCmpTitle,expectedCmpTitle,"Campaign Tiitle does not match");
         System.out.println("Actual Campaign Title: "+actualCmpTitle);
 
         String actualType="SMS";
-        String expectedTpye=driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[4]")).getText();
+        String expectedTpye=driver.findElement(By.xpath(locator.getCampaignType())).getText();
         Assert.assertEquals(actualType,expectedTpye,"Campaign Type does not match");
         System.out.println("Actual Tpye: "+actualType);
 
         String expcetedExpireDate="Never";
-        String actualExpireDate=driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div/div/table/tbody/tr[2]/td[8]")).getText();
+        String actualExpireDate=driver.findElement(By.xpath(locator.getCampaignEndDate())).getText();
         Assert.assertEquals(actualExpireDate,expcetedExpireDate,"End Date does not match");
         System.out.println("Actual Expire date: "+actualExpireDate);
         Thread.sleep(2000);
