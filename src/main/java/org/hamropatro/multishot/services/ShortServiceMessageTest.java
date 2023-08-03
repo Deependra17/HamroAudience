@@ -21,7 +21,7 @@ import java.sql.SQLOutput;
 import java.time.Duration;
 import java.util.SortedMap;
 
-public class ShortServiceMessageTest {
+public class ShortServiceMessageTest{
     private WebDriver driver;
     LoginUtil loginUtil;
     ScreenShots src= new ScreenShots();

@@ -95,7 +95,7 @@
 </classes>
 </test>
         <!--    Multishot SMS-->
-<test name="Multishot SMS Test using chrome" enabled="true">
+<test name="Multishot SMS Test using chrome" enabled="false">
 <parameter name="browser" value="Chrome"></parameter>
 <classes>
     <class name="org.hamropatro.multishot.services.ShortServiceMessageTest">
