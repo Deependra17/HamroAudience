@@ -1,13 +1,13 @@
 package org.hamropatro.multishot.services;
 
 import org.hamropatro.multishotLocators.ShortMessage;
-import org.hamropatro.util.LoginUtil;
-import org.hamropatro.util.ScreenShots;
+import org.hamropatro.utils.DriverFactory;
+import org.hamropatro.utils.LoginUtil;
+import org.hamropatro.utils.ScreenShots;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -17,9 +17,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import java.sql.SQLOutput;
 import java.time.Duration;
-import java.util.SortedMap;
 
 public class ShortServiceMessageTest{
     private WebDriver driver;
@@ -91,8 +89,8 @@ public class ShortServiceMessageTest{
     @BeforeMethod
     @Parameters("browser")
     public void beforeMethod(String browser) throws InterruptedException {
-        loginUtil= new LoginUtil(browser);
-        driver = loginUtil.getDriver();
+        driver = DriverFactory.build(browser);
+        loginUtil= new LoginUtil(driver);
         createShortServiceMessage();
         Thread.sleep(3000);
     }

@@ -3,6 +3,7 @@ package org.hamropatro.campaignLocators;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 
 public class GeneralPush {
     public String getClickOnCreateCampaign() {
@@ -87,7 +88,7 @@ public class GeneralPush {
        try (
                InputStream input = new FileInputStream("src/main/resources/campaign.properties")) {
 
-           java.util.Properties locate = new java.util.Properties();
+           Properties locate = new Properties();
 
            locate.load(input);
            this.ClickOnCreateCampaign = locate.getProperty("ClickOnCreateCampaign");

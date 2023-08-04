@@ -3,6 +3,7 @@ package org.hamropatro.campaignLocators;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 
 public class ServiceMessage {
     public String getCreateCampaignButton() {
@@ -96,9 +97,9 @@ public class ServiceMessage {
 
         InputStream input = new FileInputStream("src/main/resources/campaign.properties")) {
 
-            java.util.Properties locate = new java.util.Properties();
-
+            Properties locate = new Properties();
             locate.load(input);
+
         this.CreateCampaignButton=locate.getProperty("CreateCampaignButton");
         this.ClickOnServiceMessage= locate.getProperty("ClickOnServiceMessage");
         this.SelectTarget = locate.getProperty("SelectTarget");

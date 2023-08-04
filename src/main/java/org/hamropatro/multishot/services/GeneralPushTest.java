@@ -1,13 +1,13 @@
 package org.hamropatro.multishot.services;
 
 import org.hamropatro.multishotLocators.GeneralPush;
-import org.hamropatro.util.LoginUtil;
-import org.hamropatro.util.ScreenShots;
+import org.hamropatro.utils.DriverFactory;
+import org.hamropatro.utils.LoginUtil;
+import org.hamropatro.utils.ScreenShots;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -98,8 +98,8 @@ public class GeneralPushTest {
     @BeforeMethod
     @Parameters("browser")
     public void beforeMeethod(String browser) throws InterruptedException {
-        loginUtil= new LoginUtil(browser);
-        driver= loginUtil.getDriver();
+        driver = DriverFactory.build(browser);
+        loginUtil= new LoginUtil(driver);
         createGeneralPush();
         Thread.sleep(5000);
     }

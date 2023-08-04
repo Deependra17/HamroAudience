@@ -1,7 +1,8 @@
 package org.hamropatro.campaign.services;
 
-import org.hamropatro.util.LoginUtil;
-import org.hamropatro.util.ScreenShots;
+import org.hamropatro.utils.DriverFactory;
+import org.hamropatro.utils.LoginUtil;
+import org.hamropatro.utils.ScreenShots;
 import org.hamropatro.campaignLocators.ShortMessage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -74,8 +75,8 @@ public class CmpShortServiceMessageTest {
         @BeforeMethod
         @Parameters("browser")
         public void BeforeMethod(String browser) throws InterruptedException {
-            loginUtil= new LoginUtil(browser);
-            driver = loginUtil.getDriver();
+            driver = DriverFactory.build(browser);
+            loginUtil= new LoginUtil(driver);
             createShortServiceMessage();
             Thread.sleep(4000);
         }

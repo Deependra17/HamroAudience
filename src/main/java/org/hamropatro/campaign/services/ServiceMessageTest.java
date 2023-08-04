@@ -1,7 +1,7 @@
 package org.hamropatro.campaign.services;
 
 import org.hamropatro.campaignLocators.ServiceMessage;
-import org.hamropatro.util.*;
+import org.hamropatro.utils.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -80,8 +80,8 @@ public class ServiceMessageTest {
     @BeforeMethod
     @Parameters("browser")
     public void beforeMethod(String browser) throws InterruptedException {
-        loginUtil= new LoginUtil(browser);
-        driver= loginUtil.getDriver();
+        driver = DriverFactory.build(browser);
+        loginUtil= new LoginUtil(driver);
         createServiceMessage();
         Thread.sleep(3000);
     }

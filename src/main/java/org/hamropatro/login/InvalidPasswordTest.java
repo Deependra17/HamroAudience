@@ -1,8 +1,9 @@
 package org.hamropatro.login;
 
-import org.hamropatro.util.CustomListener;
-import org.hamropatro.util.LoginUtil;
-import org.hamropatro.util.ScreenShots;
+import org.hamropatro.utils.CustomListener;
+import org.hamropatro.utils.DriverFactory;
+import org.hamropatro.utils.LoginUtil;
+import org.hamropatro.utils.ScreenShots;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -21,8 +22,8 @@ public class InvalidPasswordTest {
     @BeforeMethod
     @Parameters({"browser"})
     public  void beforeMethod(String browser){
-        loginUtil = new LoginUtil(browser);
-        driver = loginUtil.getDriver();
+        driver = DriverFactory.build(browser);
+        loginUtil= new LoginUtil(driver);
     }
 
     @Test()

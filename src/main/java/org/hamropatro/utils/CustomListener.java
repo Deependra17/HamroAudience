@@ -1,4 +1,4 @@
-package org.hamropatro.util;
+package org.hamropatro.utils;
 
 import org.testng.*;
 

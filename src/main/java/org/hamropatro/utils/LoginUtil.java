@@ -1,4 +1,4 @@
-package org.hamropatro.util;
+package org.hamropatro.utils;
 
 import org.hamropatro.campaignLocators.Login;
 import org.openqa.selenium.By;
@@ -23,12 +23,8 @@ public class LoginUtil {
 
     private String parentHandle;
 
-    public LoginUtil(String browser) {
-        if (browser.equals("Firefox")) {
-            driver = new FirefoxDriver();
-        } else {
-            driver = new ChromeDriver();
-        }
+    public LoginUtil(WebDriver driver) {
+        this.driver = driver;
     }
     public void Login() throws InterruptedException {
         Configuration config = new Configuration();

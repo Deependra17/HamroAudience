@@ -1,9 +1,10 @@
 package org.hamropatro.campaign.services;
 
 import org.hamropatro.campaignLocators.Email;
-import org.hamropatro.util.CustomListener;
-import org.hamropatro.util.LoginUtil;
-import org.hamropatro.util.ScreenShots;
+import org.hamropatro.utils.CustomListener;
+import org.hamropatro.utils.DriverFactory;
+import org.hamropatro.utils.LoginUtil;
+import org.hamropatro.utils.ScreenShots;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -75,8 +76,8 @@ public class CmpEmailTest {
     @BeforeMethod
     @Parameters("browser")
     public void beforeMethod(String browser) throws InterruptedException {
-        loginUtil=  new LoginUtil(browser);
-        driver = loginUtil.getDriver();
+        driver = DriverFactory.build(browser);
+        loginUtil=  new LoginUtil(driver);
         createEmail();
         Thread.sleep(4000);
     }

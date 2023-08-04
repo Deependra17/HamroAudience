@@ -1,7 +1,7 @@
 package org.hamropatro.campaign.services;
 
 import org.hamropatro.campaignLocators.GeneralPush;
-import org.hamropatro.util.*;
+import org.hamropatro.utils.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -73,8 +73,8 @@ public class CmpGeneralPushTest {
     @BeforeMethod
     @Parameters("browser")
     private void beforeMethod(String browser) throws InterruptedException {
-        loginUtil= new LoginUtil(browser);
-        driver = loginUtil.getDriver();
+        driver = DriverFactory.build(browser);
+        loginUtil= new LoginUtil(driver);
         createGeneralPush();
         Thread.sleep(4000);
     }

@@ -3,6 +3,7 @@ package org.hamropatro.multishotLocators;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 
 public class ShortMessage {
 
@@ -99,7 +100,7 @@ public class ShortMessage {
         try (
                 InputStream input = new FileInputStream("src/main/resources/multishot.properties")) {
 
-            java.util.Properties locate = new java.util.Properties();
+            Properties locate = new Properties();
 
             locate.load(input);
             this.ClickOnMultishotButton=locate.getProperty("ClickOnMultishotButton");

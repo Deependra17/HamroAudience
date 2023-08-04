@@ -1,8 +1,9 @@
 package org.hamropatro.multishot.services;
 
 import org.hamropatro.multishotLocators.ServiceMessage;
-import org.hamropatro.util.LoginUtil;
-import org.hamropatro.util.ScreenShots;
+import org.hamropatro.utils.DriverFactory;
+import org.hamropatro.utils.LoginUtil;
+import org.hamropatro.utils.ScreenShots;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -123,8 +124,8 @@ public class ServiceMessageTest {
         @BeforeMethod
         @Parameters("browser")
         public void beforeMethod(String browser) throws InterruptedException {
-            loginUtil= new LoginUtil(browser);
-            driver= loginUtil.getDriver();
+            driver = DriverFactory.build(browser);
+            loginUtil= new LoginUtil(driver);
             createServiceMessage();
             Thread.sleep(3000);
         }

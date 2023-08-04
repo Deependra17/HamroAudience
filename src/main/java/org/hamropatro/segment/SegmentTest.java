@@ -1,8 +1,9 @@
 package org.hamropatro.segment;
 
-import org.hamropatro.util.CustomListener;
-import org.hamropatro.util.LoginUtil;
-import org.hamropatro.util.ScreenShots;
+import org.hamropatro.utils.CustomListener;
+import org.hamropatro.utils.DriverFactory;
+import org.hamropatro.utils.LoginUtil;
+import org.hamropatro.utils.ScreenShots;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -48,8 +49,8 @@ public class SegmentTest {
     @Parameters("browser")
     public void BeforeMethod(String browser) throws InterruptedException {
         System.out.println("Browser: " + browser);
-        loginUtil = new LoginUtil(browser);
-        driver = loginUtil.getDriver();
+        driver = DriverFactory.build(browser);
+        loginUtil= new LoginUtil(driver);
         createSegment();
         Thread.sleep(4000);
     }

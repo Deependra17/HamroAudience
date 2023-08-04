@@ -1,8 +1,9 @@
 package org.hamropatro.userTag;
 
-import org.hamropatro.util.CustomListener;
-import org.hamropatro.util.LoginUtil;
-import org.hamropatro.util.ScreenShots;
+import org.hamropatro.utils.CustomListener;
+import org.hamropatro.utils.DriverFactory;
+import org.hamropatro.utils.LoginUtil;
+import org.hamropatro.utils.ScreenShots;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
@@ -20,7 +21,8 @@ public class UserTagTest {
     @Test(alwaysRun = true)
     @Parameters("browser")
     public void createUserTag(String browser) throws InterruptedException {
-        loginUtil= new LoginUtil(browser);
+        driver = DriverFactory.build(browser);
+        loginUtil= new LoginUtil(driver);
         loginUtil.Login();
         parentHandle();
     }

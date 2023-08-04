@@ -164,7 +164,7 @@
 </classes>
 </test>
         <!--    Campaign SMS-->
-<test name="Campaign SMS test - Firefox" enabled="false">
+<test name="Campaign SMS test - Firefox" enabled="true">
 <parameter name="browser" value="Firefox"></parameter>
 <classes>
     <class name="org.hamropatro.campaign.services.CmpShortServiceMessageTest">
