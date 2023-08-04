@@ -65,7 +65,7 @@ public class LoginUtil {
         System.out.println("Email is Entered Successfully");
 
         WebElement password= driver.findElement(By.xpath(locate.getEnterPassword()));
-        password.sendKeys(config.getPassword());
+        password.       sendKeys(config.getPassword());
         System.out.println("password is Entered successfully");
 
         driver.findElement(By.xpath(locate.getClickButton())).click();

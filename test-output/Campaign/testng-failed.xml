@@ -5,16 +5,16 @@
     <listener class-name="org.testng.reporters.EmailableReporter"/>
     <listener class-name="org.testng.reporters.FailedReporter"/>
   </listeners>
-  <test thread-count="5" parallel="tests" name="Campaign SMS test - Firefox(failed)" verbose="4">
-    <parameter name="browser" value="Firefox"/>
+  <test thread-count="5" parallel="tests" name="SegmentTest using chrome(failed)" verbose="4">
+    <parameter name="browser" value="Chrome"/>
     <classes>
-      <class name="org.hamropatro.campaign.services.CmpShortServiceMessageTest">
+      <class name="org.hamropatro.segment.SegmentTest">
         <methods>
-          <include name="verifySms"/>
-          <include name="tearDown"/>
           <include name="BeforeMethod"/>
+          <include name="tearDown"/>
+          <include name="verifySegmentName"/>
         </methods>
-      </class> <!-- org.hamropatro.campaign.services.CmpShortServiceMessageTest -->
+      </class> <!-- org.hamropatro.segment.SegmentTest -->
     </classes>
-  </test> <!-- Campaign SMS test - Firefox(failed) -->
+  </test> <!-- SegmentTest using chrome(failed) -->
 </suite> <!-- Failed suite [Campaign] -->
